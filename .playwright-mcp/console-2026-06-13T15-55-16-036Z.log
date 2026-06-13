@@ -1,0 +1,71 @@
+[    1224ms] [ERROR] Failed to find a valid digest in the 'integrity' attribute for resource 'https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js' with computed SHA-512 integrity 'qH+R6YL4/40iiIrnN5aNZ1sEeEalNAdnzP9jfsxFPBdIslTkwUddkSazjVWhJ3f/3Y26QF6aql0xeneuVw0h/Q=='. The resource has been blocked. @ https://campub.com.tw/article/detail/1781363518jqCG:0
+[    1449ms] [LOG]  @ https://campub.com.tw/article/detail/1781363518jqCG:3022
+[    1463ms] [LOG] zzzz @ https://campub.com.tw/article/detail/1781363518jqCG:2902
+[    1463ms] [LOG] lz @ https://campub.com.tw/article/detail/1781363518jqCG:2905
+[    1495ms] [LOG] 圖片快取已清除 @ https://res.ostore.tw/res/cache/e6e9081fb9cfd9dbd969745efa013ea4.js?202300406AM1027:157
+[    1495ms] [LOG] true @ https://res.ostore.tw/res/cache/e6e9081fb9cfd9dbd969745efa013ea4.js?202300406AM1027:102
+[    1495ms] [LOG] dyArticle @ https://res.ostore.tw/res/page/mixin/web/page/dyArticleList.js?202300406AM1027_v8:3
+[    1495ms] [LOG] alertModalMixin created @ https://res.ostore.tw/res/cache/e6e9081fb9cfd9dbd969745efa013ea4.js?202300406AM1027:34
+[    1495ms] [LOG] {WWJvaFNwTWtnWUFUOVcwdVpmMFVzQT09: undefined, __ob__: mt} @ https://res.ostore.tw/res/cache/e6e9081fb9cfd9dbd969745efa013ea4.js?202300406AM1027:34
+[    1496ms] [LOG] 1781366117531 @ https://res.ostore.tw/res/cache/e6e9081fb9cfd9dbd969745efa013ea4.js?202300406AM1027:34
+[    1496ms] [LOG] {WWJvaFNwTWtnWUFUOVcwdVpmMFVzQT09: undefined, __ob__: mt} @ https://res.ostore.tw/res/cache/e6e9081fb9cfd9dbd969745efa013ea4.js?202300406AM1027:34
+[    1499ms] [LOG] 進入參數化事件 @ https://res.ostore.tw/res/cache/e6e9081fb9cfd9dbd969745efa013ea4.js?202300406AM1027:76
+[    1556ms] [LOG] 開始註冊 IntersectionObserver @ https://res.ostore.tw/res/cache/e6e9081fb9cfd9dbd969745efa013ea4.js?202300406AM1027:103
+[    1729ms] [LOG] {test_time: undefined, devData: undefined, mathchOfferInfo: undefined, giftInfo: undefined, totOfferVal: undefined} @ https://campub.com.tw/res/page/component/cart/nav_cart.big.js?v3.99:48
+[    1826ms] [WARNING] [Meta Pixel] - Duplicate Pixel ID: 2614068128859640. @ https://connect.facebook.net/zh_TW/fbevents.js:183
+[    2500ms] [LOG] 全部完成 @ https://res.ostore.tw/res/cache/e6e9081fb9cfd9dbd969745efa013ea4.js?202300406AM1027:51
+[    2500ms] [LOG] 全部完成，銷毀計時器 @ https://res.ostore.tw/res/cache/e6e9081fb9cfd9dbd969745efa013ea4.js?202300406AM1027:34
+[    3326ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://va.tawk.to/v1/session/start:0
+[    7352ms] [LOG] ga_scroll_flag_1 @ https://campub.com.tw/article/detail/1781363518jqCG:3195
+[    9204ms] [LOG] ga_scroll_flag_2 @ https://campub.com.tw/article/detail/1781363518jqCG:3199
+[    9225ms] [LOG] 0.07288326140372986 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[    9242ms] [LOG] 0.019218428872243842 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[    9258ms] [LOG] 0.01578086984077437 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[    9276ms] [LOG] 0.015404209386349899 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[    9585ms] [LOG] 0.015038603401077544 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[    9602ms] [LOG] 0.014687718226256974 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[    9619ms] [LOG] 0.01358518870505776 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[    9635ms] [LOG] 0.01142640036476783 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   10942ms] [LOG] 0.009724904496054343 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   10961ms] [LOG] 0.012574863701473316 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   10974ms] [LOG] 0.014056146779551193 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   10991ms] [LOG] 0.014864821417121366 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   11008ms] [LOG] 0.015419077437802853 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   11024ms] [LOG] 0.01535478588367084 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   13379ms] [LOG] ga_scroll_flag_3 @ https://campub.com.tw/article/detail/1781363518jqCG:3203
+[   19270ms] [LOG] 0.26176294860946814 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19288ms] [LOG] 0.265278470921508 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19303ms] [LOG] 0.2665340451662723 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19320ms] [LOG] 0.267036274864178 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19431ms] [LOG] 0.2675384617754337 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19448ms] [LOG] 0.26854292117124523 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19464ms] [LOG] 0.2715562565720294 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19481ms] [LOG] 0.2775828845869479 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19498ms] [LOG] 0.2881295370963679 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19514ms] [LOG] 0.303447243375942 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19531ms] [LOG] 0.32127609814504465 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19554ms] [LOG] 0.34010936952330884 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19571ms] [LOG] 0.35869152605262 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19587ms] [LOG] 0.3755159214259113 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19604ms] [LOG] 0.38957809624737116 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19613ms] [LOG] ga_scroll_flag_4 @ https://campub.com.tw/article/detail/1781363518jqCG:3207
+[   19620ms] [LOG] 0.39937140420993256 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19637ms] [LOG] 0.40489584531359535 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19654ms] [LOG] 0.40715583616752105 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19964ms] [LOG] 0.40740695101647384 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19980ms] [LOG] 0.40765806586542674 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   19997ms] [LOG] 0.40841141041228535 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   20014ms] [LOG] 0.41067140126621104 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   20031ms] [LOG] 0.41619579958322384 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   20047ms] [LOG] 0.4274957966395023 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   20064ms] [LOG] 0.4465801828667192 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   20080ms] [LOG] 0.46968232110388186 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   20097ms] [LOG] 0.495295607830573 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   20120ms] [LOG] 0.5199044351614529 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   20138ms] [LOG] 0.5407465825446898 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   20148ms] [LOG] ga_scroll_flag_5 @ https://campub.com.tw/article/detail/1781363518jqCG:3211
+[   20153ms] [LOG] 0.5570687482200753 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   20170ms] [LOG] 0.5683687024897038 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   20187ms] [LOG] 0.5743953732912723 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   20203ms] [LOG] 0.5769064362075009 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
+[   20220ms] [LOG] 0.5776598235410094 @ https://campub.com.tw/article/detail/1781363518jqCG:2813
