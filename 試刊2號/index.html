@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>非知不可鐵板燒料理技法 — 卿鬆翻一頁</title>
+<style>
+:root {
+  --iron: #6B5B4F;
+  --iron-dark: #4A3F36;
+  --flame: #C0392B;
+  --flame-light: #D4875E;
+  --warm-grey: #8B7D72;
+  --cream: #FFF9F2;
+  --cream-dark: #F5EDE4;
+  --text: #3D2C1A;
+  --text-light: #7A6B5A;
+  --white-90: rgba(255,252,248,0.92);
+  --shadow: 0 4px 24px rgba(74,53,37,0.10);
+  --shadow-lg: 0 8px 40px rgba(74,53,37,0.15);
+  --radius: 16px;
+  --max-w: 680px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.8;
+  color: var(--text);
+  background: var(--cream-dark);
+  background-image: url('../generated/teppanyaki-bg_20260613_233422.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+.container { max-width: var(--max-w); margin: 0 auto; padding: 32px 16px 48px; }
+.hero {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 24px;
+}
+.hero img { display: block; width: 100%; height: auto; }
+.card {
+  background: var(--white-90);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px 28px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(8px);
+}
+.card h1 {
+  margin: 0 0 4px;
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--iron-dark);
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+}
+.subtitle {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--cream-dark);
+}
+.card p {
+  margin: 0 0 14px;
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--text);
+}
+.card p:last-child { margin-bottom: 0; }
+.section-divider {
+  text-align: center;
+  margin: 0 0 18px;
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  color: var(--flame-light);
+}
+.section-divider::before, .section-divider::after {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: var(--flame-light);
+  opacity: 0.3;
+  vertical-align: middle;
+}
+.section-divider::before { margin-right: 8px; }
+.section-divider::after { margin-left: 8px; }
+.features { list-style: none; padding: 0; }
+.features li {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--cream-dark);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.features li:last-child { border-bottom: none; }
+.features li .emoji { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+.features li strong { color: var(--iron-dark); display: block; margin-bottom: 2px; }
+.recipe-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.recipe-grid .item {
+  flex: 1 1 calc(50% - 6px);
+  min-width: 0;
+}
+.recipe-grid .item-inner {
+  background: #F8F5F0;
+  border: 1px solid #EDE0D0;
+  border-radius: 10px;
+  padding: 14px 12px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--iron);
+}
+.recipe-grid .item-inner .emoji { font-size: 22px; display: block; margin-bottom: 4px; }
+.cta-box {
+  background: linear-gradient(135deg, var(--flame), var(--iron-dark));
+  border-radius: var(--radius);
+  padding: 30px 24px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.cta-box h2 { margin: 0 0 6px; font-size: 20px; font-weight: 700; }
+.cta-box p { margin: 0; font-size: 14.5px; opacity: 0.92; line-height: 1.7; }
+.footer {
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid #E0D8CC;
+  font-size: 13px;
+  color: var(--text-light);
+}
+@media (max-width: 768px) {
+  .container { padding: 24px 12px 40px; }
+  .card { padding: 24px 18px; }
+  .card h1 { font-size: 22px; }
+  .cta-box { padding: 24px 18px; }
+  .cta-box h2 { font-size: 18px; }
+}
+@media (max-width: 480px) {
+  .container { padding: 16px 10px 32px; }
+  .card { padding: 20px 14px; border-radius: 12px; }
+  .card h1 { font-size: 20px; }
+  .card p { font-size: 14px; }
+  .subtitle { font-size: 13px; }
+  .recipe-grid .item { flex: 1 1 100%; }
+  .cta-box { padding: 20px 14px; }
+  .cta-box h2 { font-size: 17px; }
+  .cta-box p { font-size: 13.5px; }
+  .features li { font-size: 14px; gap: 10px; }
+  .features li .emoji { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="hero">
+    <img src="https://d8557557.github.io/mediterranean-newsletter/%E8%A9%A6%E5%88%8A2%E8%99%9F/%E4%B8%80%E9%A0%81-%E9%9D%9E%E7%9F%A5%E4%B8%8D%E5%8F%AF%E9%90%B5%E6%9D%BF%E7%87%92%E6%96%99%E7%90%86%E6%8A%80%E6%B3%95.jpeg" alt="非知不可鐵板燒料理技法">
+  </div>
+
+  <div class="card">
+    <h1>翻一頁，開始你的鐵板燒料理之旅</h1>
+    <div class="subtitle">非知不可鐵板燒料理技法</div>
+    <p>鐵板燒在台灣一直是很受歡迎的一項餐飲選擇類別，但並不像其他料理一樣全台遍地普及，原因是受限於鐵板技術的高門檻，也就是人才的培育。</p>
+    <p>鐵板燒師傅的訓練有別於一般的廚師，營業期間由於開放廚房的特性，較不容易訓練，學徒通常都是利用非營運時間訓練，也因此導致整體的訓練周期比起一般廚師都還要來得更長。訓練的難度較高、訓練時間也較長，近年逐漸造成人員的斷層；不過也如此，鐵板燒師傅的薪資待遇通常要比一般廚師來得高上許多。</p>
+    <p>本書即希望對於鐵板燒有興趣的年輕夥伴、餐飲學子，可以好好詳細地認識鐵板師傅的學習過程，而業者與本身從事鐵板相關師傅，在手法與技術上每一位師傅都還是會有些許差異，僅希望能藉由此工具書，讓人員訓練上可以有明確的方向，幫助其理解與縮短訓練期。</p>
+    <p>本書將詳細的介紹基本鐵板燒的服務禮儀與鐵板手法的技巧，將各種繁複的動作一拆解，以分解動作的方式，讓讀者能清楚明瞭、更好上手，藉此吸引並培養更多的餐飲人才投身鐵板師傅行列。</p>
+  </div>
+
+  <div class="card">
+    <div class="section-divider">五 大 特 色</div>
+    <ul class="features">
+      <li><span class="emoji">🍳</span><div><strong>獨特培訓體系</strong>鐵板師傅訓練有別於一般廚師，從基礎到進階的完整學習路徑，奠定紮實基本功</div></li>
+      <li><span class="emoji">🔥</span><div><strong>開放廚房實戰</strong>在營業現場磨練技藝，真實面對顧客的即時反饋，累積臨場經驗</div></li>
+      <li><span class="emoji">📖</span><div><strong>系統化分解教學</strong>將繁複動作拆解為分解步驟，以圖片搭配文字清楚解說，大幅縮短學習曲線</div></li>
+      <li><span class="emoji">💰</span><div><strong>高薪職涯發展</strong>鐵板師傅薪資待遇優於一般廚師，技術門檻帶來更高的專業價值與回報</div></li>
+      <li><span class="emoji">📚</span><div><strong>全面工具書</strong>從基礎工具、設備到烹調技巧，一本涵蓋所有鐵板知識，初學到高手都適用</div></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="section-divider">人 氣 推 薦</div>
+    <div class="recipe-grid">
+      <div class="item"><div class="item-inner"><span class="emoji">🔪</span>基礎工具與設備</div></div>
+      <div class="item"><div class="item-inner"><span class="emoji">🤝</span>服務禮儀與應對</div></div>
+      <div class="item"><div class="item-inner"><span class="emoji">👐</span>鐵板手法分解教學</div></div>
+      <div class="item"><div class="item-inner"><span class="emoji">⭐</span>從初學到高手之路</div></div>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h2>翻開屬於你的鐵板燒故事</h2>
+    <p>無論你是餐飲學子、年輕廚師，還是對鐵板燒充滿好奇的美食愛好者，這本《非知不可鐵板燒料理技法》將帶你一步步走進鐵板廚藝的精彩世界。準備好了嗎？現在就翻開第一頁！</p>
+  </div>
+
+  <div class="card" style="text-align:center; border:2px dashed var(--flame-light); background:var(--white-90);">
+    <p style="margin:0; font-size:15px; line-height:1.8; color:var(--text);">
+      感謝您的今天的閱報，讀者禮「<strong style="color:var(--flame);">10元購物金</strong>」限量100份<br>
+      輸入兌換碼「<strong style="color:var(--flame);">卿鬆鐵板燒</strong>」就可以兌換<br>
+      卿鬆翻一頁，我們下頁見！
+    </p>
+  </div>
+
+  <div class="footer">
+    <p>卿鬆翻一頁 &copy; 2026</p>
+  </div>
+
+</div>
+</body>
+</html>
