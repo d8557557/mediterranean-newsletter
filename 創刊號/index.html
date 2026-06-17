@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>卿鬆翻一頁 — 高代謝地中海日常菜</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --terracotta: #C4815A;
+  --terracotta-dark: #9E6340;
+  --olive: #7D9B6A;
+  --olive-dark: #5E7A4E;
+  --med-blue: #6B8FA3;
+  --cream: #FFF9F2;
+  --cream-dark: #F5EDE4;
+  --warm-brown: #4A3525;
+  --text: #3D2C1A;
+  --text-light: #7A6B5A;
+  --white-90: rgba(255,252,248,0.92);
+  --white-80: rgba(255,252,248,0.80);
+  --shadow: 0 4px 24px rgba(74,53,37,0.10);
+  --shadow-lg: 0 8px 40px rgba(74,53,37,0.15);
+  --radius: 16px;
+  --max-w: 680px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  color: var(--text);
+  line-height: 1.8;
+  min-height: 100vh;
+  background: var(--cream-dark);
+  background-image: url('../generated/mediterranean-beef-bg_20260617_113631.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(255,249,242,0.30);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 30px 16px 60px;
+}
+
+.hero {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 32px;
+  background: var(--cream);
+  position: relative;
+}
+
+.hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.card {
+  background: var(--white-90);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 40px 36px;
+  margin-bottom: 24px;
+  transition: box-shadow 0.3s;
+}
+
+.card:hover { box-shadow: var(--shadow-lg); }
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--terracotta-dark);
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--terracotta-dark);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: var(--text-light);
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--cream-dark);
+}
+
+p { margin-bottom: 1.2em; }
+
+.intro { font-size: 16px; color: var(--text); }
+
+.intro strong { color: var(--terracotta-dark); }
+
+.highlight-box {
+  background: linear-gradient(135deg, rgba(196,129,90,0.08), rgba(125,155,106,0.08));
+  border-left: 4px solid var(--terracotta);
+  padding: 20px 24px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin: 20px 0;
+  font-size: 15px;
+  color: var(--warm-brown);
+}
+
+.features { list-style: none; padding: 0; margin: 24px 0; }
+
+.features li {
+  display: flex;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(74,53,37,0.06);
+  align-items: flex-start;
+}
+
+.features li:last-child { border-bottom: none; }
+
+.feature-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.feature-icon.c1 { background: linear-gradient(135deg, var(--terracotta), #D49A6A); }
+.feature-icon.c2 { background: linear-gradient(135deg, var(--olive), #8FB87A); }
+.feature-icon.c3 { background: linear-gradient(135deg, var(--med-blue), #8DB0C4); }
+.feature-icon.c4 { background: linear-gradient(135deg, #B8896A, var(--terracotta)); }
+.feature-icon.c5 { background: linear-gradient(135deg, var(--olive-dark), var(--olive)); }
+
+.feature-text { flex: 1; }
+
+.feature-label {
+  font-weight: 700;
+  color: var(--terracotta-dark);
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.feature-desc { font-size: 14.5px; color: var(--text-light); line-height: 1.7; }
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.recipe-item {
+  background: var(--cream);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 14px;
+  color: var(--warm-brown);
+  text-align: center;
+  border: 1px solid rgba(196,129,90,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.recipe-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74,53,37,0.08);
+}
+
+.recipe-item .emoji { font-size: 22px; display: block; margin-bottom: 4px; }
+
+.section-divider {
+  text-align: center;
+  margin: 32px 0;
+  color: var(--olive);
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  position: relative;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: var(--olive);
+  opacity: 0.3;
+  vertical-align: middle;
+  margin: 0 12px;
+}
+
+.cta-box {
+  background: linear-gradient(135deg, var(--terracotta), var(--terracotta-dark));
+  border-radius: var(--radius);
+  padding: 36px;
+  text-align: center;
+  color: #fff;
+  margin-top: 24px;
+}
+
+.cta-box h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+  color: #fff;
+}
+
+.cta-box p { font-size: 15px; opacity: 0.9; margin-bottom: 0; line-height: 1.6; }
+
+.footer {
+  text-align: center;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(74,53,37,0.10);
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+.footer a { color: var(--terracotta); text-decoration: none; }
+
+.footer a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .container { padding: 16px 12px 40px; }
+  .card { padding: 28px 20px; }
+  h1 { font-size: 24px; }
+  .recipe-grid { grid-template-columns: 1fr; }
+  .highlight-box { padding: 16px 18px; }
+  .cta-box { padding: 28px 20px; }
+  .cta-box h2 { font-size: 19px; }
+}
+
+@media (max-width: 480px) {
+  .card { padding: 20px 16px; border-radius: 12px; }
+  h1 { font-size: 21px; }
+  .features li { padding: 14px 0; }
+  .feature-icon { width: 30px; height: 30px; font-size: 13px; }
+  .feature-label { font-size: 15px; }
+  .feature-desc { font-size: 13.5px; }
+  .intro { font-size: 15px; }
+  .cta-box h2 { font-size: 17px; }
+  .cta-box p { font-size: 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="hero">
+    <img src="../generated/hero-mediterranean-beef_20260617_113548.jpg" alt="卿鬆翻一頁 — 高代謝地中海日常菜">
+  </div>
+
+  <div class="card">
+    <h1>翻一頁，開始你的 Mediterranean Life</h1>
+    <div class="subtitle">早上 9 點的暴擊！1.5公分厚無骨牛小排，在家就能做</div>
+
+    <p class="intro">🖐️嗨嗨！我是卿鬆。不知道你是不是也跟我一樣，有一天發現這個世界再也無法讓你逃離吵雜的生活。</p>
+    <p class="intro">跟著我，找回生活的專注與平靜。在這個專屬空間裡，除了有精心挑選的書中精華，文末也為你準備了暖心的小驚喜！</p>
+
+    <div class="highlight-box">
+      準備這一封信的時候是一早的9點上班時間<br>
+      就算沒有煮飯習慣，因為書中很多美食照，想像著烹調畫面<br>
+      <strong>❤️真的是放在桌上就感到超開心❤️</strong>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="text-align:center;">⚡ 滋滋作響的梅納反應</h2>
+    <p style="text-align:center; color:var(--text-light); margin-bottom:20px;">600 公克的無骨牛小排（足足有 1.5 公分厚）走進煎鍋</p>
+
+    <p>放在煎鍋上，發出誘人的聲音 ⚡⚡⚡滋— 滋—滋—</p>
+    <p><strong>梅納反應作用</strong>，造成的濃厚香氣和深褐色脆皮——這就是所謂的「鍋氣」，也是美味料理的靈魂所在。</p>
+  </div>
+
+  <div class="card">
+    <div class="section-divider">番 茄 蔬 菜 多 酚 萬 用 醬</div>
+
+    <p>嚓嚓嚓嚓嚓嚓——</p>
+    <p>緊接著，各種食材在砧板上發出清脆的節奏。<br>
+    洋蔥🧅微微嗆辣的氣味、切碎番茄罐頭帶點酸味🍅、西洋芹帶出特有味道與清爽口感🥬，加上其他常見家庭煮飯備品。</p>
+
+    <div class="highlight-box">
+      <strong>香煎牛小排淋上這款萬用醬</strong><br>
+      美味番茄蔬菜多酚烤牛小排🥩在家就可以完成
+    </div>
+
+    <p>如果吃飽不想刷煎鍋🍳，這道菜還有提供<strong>烤箱烹調方式</strong>！</p>
+    <p style="text-align:center; color:var(--text-light); margin-bottom:0;">菜單就藏在書中第四章・高蛋白的豐盛主菜<br>不知你是不是跟我一樣看到牛排就無法抵抗🤤</p>
+  </div>
+
+  <div class="card">
+    <div class="section-divider">五 大 特 色</div>
+
+    <p style="text-align:center; color:var(--text-light); margin-bottom:16px;">
+      主廚馬可老師親身實證，讓你不算熱量、不控食量，每天吃好、吃飽又吃瘦
+    </p>
+
+    <ul class="features">
+      <li>
+        <span class="feature-icon c1">1</span>
+        <div class="feature-text">
+          <div class="feature-label">食材好買</div>
+          <div class="feature-desc">選用季節蔬菜、肉類、海鮮，在超市、菜市場一次買齊，實惠又方便。</div>
+        </div>
+      </li>
+      <li>
+        <span class="feature-icon c2">2</span>
+        <div class="feature-text">
+          <div class="feature-label">營養均衡</div>
+          <div class="feature-desc">掌握高代謝食材比例，不用算就能自然滿足身體所需、吃出健康體態。</div>
+        </div>
+      </li>
+      <li>
+        <span class="feature-icon c3">3</span>
+        <div class="feature-text">
+          <div class="feature-label">烹調簡單</div>
+          <div class="feature-desc">省去複雜的步驟，改以氣炸鍋、烤箱、電鍋等小家電輔助，省時省力。</div>
+        </div>
+      </li>
+      <li>
+        <span class="feature-icon c4">4</span>
+        <div class="feature-text">
+          <div class="feature-label">用途多元</div>
+          <div class="feature-desc">自由搭配主菜、配菜和澱粉，無論早午晚餐、帶便當還是聚餐都適合。</div>
+        </div>
+      </li>
+      <li>
+        <span class="feature-icon c5">5</span>
+        <div class="feature-text">
+          <div class="feature-label">保存方便</div>
+          <div class="feature-desc">善用食材預調理、常備菜，每天15分鐘輕鬆上菜，吃得健康又美味！</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="cta-box">
+    <h2>跟著馬可主廚一起</h2>
+    <p>好入手的「地中海飲食法」，不算熱量、不控食量，<br>每天吃好、吃飽又吃瘦！</p>
+  </div>
+
+  <div class="card" style="text-align:center; border:2px dashed var(--terracotta); background:var(--white-90);">
+    <p style="margin:0; font-size:15px; line-height:1.8; color:var(--warm-brown);">
+      感謝您的今天的閱報，讀者禮「<strong style="color:var(--terracotta-dark);">10元購物金</strong>」限量100份<br>
+      輸入兌換碼「<strong style="color:var(--terracotta-dark);">卿鬆領10元</strong>」就可以兌換<br>
+      卿鬆翻一頁，我們下頁見！
+    </p>
+  </div>
+
+  <div style="text-align:center; font-size:14px; color:#8B7D72; margin-bottom:16px;">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfBeuECJmAnhRDTRv-i6509RGbg3VRolu7_BuAPBPM9pnNXCQ/viewform" target="_blank" style="color:#8B7D72; text-decoration:underline;">不想收到卿鬆小編的信請點我</a>
+  </div>
+
+  <div class="footer">
+    <p>卿鬆翻一頁 &#169; 2026 &nbsp;·&nbsp; 高代謝地中海日常菜</p>
+  </div>
+
+</div>
+
+</body>
+</html>
