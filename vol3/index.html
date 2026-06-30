@@ -27,24 +27,11 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
   line-height: 1.8;
   color: var(--text);
-  background: var(--cream-dark) url("generated/bg-童話心理學_20260630_110205.jpg") center top / cover fixed;
+  background: var(--cream-dark) url("../generated/bg-童話心理學_20260630_110205.jpg") center top / cover fixed;
 }
 .container { max-width: var(--max-w); margin: 0 auto; padding: 24px 16px 48px; }
-.archive-link {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.archive-link a {
-  display: inline-block;
-  background: var(--white-90);
-  color: var(--text-light);
-  text-decoration: none;
-  font-size: 13px;
-  padding: 6px 18px;
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-}
-.archive-link a:hover { background: #fff; }
+
+/* Hero */
 .hero {
   width: 100%;
   border-radius: var(--radius);
@@ -52,7 +39,13 @@ body {
   box-shadow: var(--shadow-lg);
   margin-bottom: 24px;
 }
-.hero img { display: block; width: 100%; height: auto; }
+.hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Card */
 .card {
   background: var(--white-90);
   backdrop-filter: blur(6px);
@@ -63,67 +56,168 @@ body {
   margin-bottom: 20px;
 }
 .card h1 {
-  margin: 0 0 4px; font-size: 25px; font-weight: 700; color: var(--olive-dark);
-  letter-spacing: 0.03em; line-height: 1.3;
+  margin: 0 0 4px;
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--olive-dark);
+  letter-spacing: 0.03em;
+  line-height: 1.3;
 }
 .card .subtitle {
-  font-size: 14px; color: var(--text-light);
-  margin-bottom: 20px; padding-bottom: 16px;
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 20px;
+  padding-bottom: 16px;
   border-bottom: 2px solid #EDE8E0;
 }
-.card p { margin-bottom: 14px; font-size: 15.5px; line-height: 1.9; color: var(--text); }
+.card p {
+  margin-bottom: 14px;
+  font-size: 15.5px;
+  line-height: 1.9;
+  color: var(--text);
+}
 .card p:last-child { margin-bottom: 0; }
+
+/* Section divider */
 .section-divider {
-  text-align: center; margin: 0 0 18px;
-  font-size: 13px; letter-spacing: 0.25em; color: var(--olive);
+  text-align: center;
+  margin: 0 0 18px;
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  color: var(--olive);
 }
 .section-divider::before,
 .section-divider::after {
   content: "";
-  display: inline-block; width: 30px; height: 1px;
-  background: var(--olive); opacity: 0.3; vertical-align: middle;
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: var(--olive);
+  opacity: 0.3;
+  vertical-align: middle;
 }
 .section-divider::before { margin-right: 8px; }
 .section-divider::after  { margin-left: 8px; }
+
+/* Highlight box */
 .highlight-box {
-  background: #F6F2EC; border-left: 4px solid var(--olive);
-  border-radius: 0 10px 10px 0; padding: 20px 22px; margin: 18px 0;
+  background: #F6F2EC;
+  border-left: 4px solid var(--olive);
+  border-radius: 0 10px 10px 0;
+  padding: 20px 22px;
+  margin: 18px 0;
 }
 .highlight-box p { margin-bottom: 8px; }
 .highlight-box p:last-child { margin-bottom: 0; }
-.inner-image { text-align: center; margin: 24px 0 20px; }
+
+/* Inner image */
+.inner-image {
+  text-align: center;
+  margin: 24px 0 20px;
+}
 .inner-image img {
-  max-width: 100%; height: auto;
-  border-radius: 12px; box-shadow: var(--shadow);
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
 }
 .inner-image .caption {
-  font-size: 13px; color: var(--text-light); margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-light);
+  margin-top: 6px;
 }
+
+/* Inline image (floated) */
+.inline-img-right {
+  float: right;
+  width: 200px;
+  margin: 6px 0 10px 18px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+@media (max-width: 480px) {
+  .inline-img-right {
+    float: none;
+    display: block;
+    width: 100%;
+    margin: 18px auto;
+  }
+}
+
+/* Quote */
 .quote-block {
-  font-style: italic; font-size: 17px; color: var(--warm-brown);
-  text-align: center; padding: 16px 10px; margin: 16px 0;
-  border-top: 1px solid #EDE8E0; border-bottom: 1px solid #EDE8E0;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--warm-brown);
+  text-align: center;
+  padding: 16px 10px;
+  margin: 16px 0;
+  border-top: 1px solid #EDE8E0;
+  border-bottom: 1px solid #EDE8E0;
 }
+
+/* CTA */
 .cta-box {
   background: linear-gradient(135deg, #6B8F5E, #4A6B3E);
-  border-radius: var(--radius); padding: 30px 24px;
-  text-align: center; color: #fff; margin-bottom: 20px;
+  border-radius: var(--radius);
+  padding: 30px 24px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
 }
-.cta-box h2 { margin: 0 0 6px; font-size: 20px; font-weight: 700; }
-.cta-box p { margin: 0; font-size: 14.5px; opacity: 0.92; color: #fff; }
+.cta-box h2 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.cta-box p {
+  margin: 0;
+  font-size: 14.5px;
+  opacity: 0.92;
+  color: #fff;
+}
+
+/* Reader Gift */
 .gift-box {
-  text-align: center; border: 2px dashed var(--terracotta);
-  background: var(--white-90); border-radius: var(--radius);
-  padding: 22px 24px; margin-bottom: 20px;
+  text-align: center;
+  border: 2px dashed var(--terracotta);
+  background: var(--white-90);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-bottom: 20px;
 }
-.gift-box p { margin: 0; font-size: 15px; line-height: 1.8; color: var(--warm-brown); }
-.gift-box strong { color: var(--terracotta-dark); }
-.unsubscribe { text-align: center; font-size: 14px; color: #8B7D72; margin-bottom: 14px; }
-.unsubscribe a { color: #8B7D72; text-decoration: underline; }
+.gift-box p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--warm-brown);
+}
+.gift-box strong {
+  color: var(--terracotta-dark);
+}
+
+/* Unsubscribe */
+.unsubscribe {
+  text-align: center;
+  font-size: 14px;
+  color: #8B7D72;
+  margin-bottom: 14px;
+}
+.unsubscribe a {
+  color: #8B7D72;
+  text-decoration: underline;
+}
+
+/* Footer */
 .footer {
-  text-align: center; padding-top: 16px;
-  border-top: 1px solid #E0D8CC; font-size: 13px; color: var(--text-light);
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid #E0D8CC;
+  font-size: 13px;
+  color: var(--text-light);
 }
+
+/* RWD */
 @media (max-width: 480px) {
   .container { padding: 16px 12px 36px; }
   .card { padding: 24px 18px; }
@@ -136,14 +230,9 @@ body {
 <body>
 <div class="container">
 
-  <!-- Archive link -->
-  <div class="archive-link">
-    <a href="vol3/">📂 瀏覽歷史期刊 →</a>
-  </div>
-
   <!-- Hero -->
   <div class="hero">
-    <img src="generated/hero-童話心理學_20260630_110025.jpg" alt="童話裡的心理學">
+    <img src="../generated/hero-童話心理學_20260630_110025.jpg" alt="童話裡的心理學">
   </div>
 
   <!-- Intro -->
@@ -152,18 +241,23 @@ body {
     <div class="subtitle">魔鬼的三根金頭髮 — 關於「舊思維」的童話警示</div>
 
     <p>🖐 嗨嗨！我是卿鬆。不知道你是不是也跟我一樣，有一天發現這個世界再也無法讓你逃離吵雜的生活。</p>
+
     <p>跟著我，找回生活的專注與平靜。在這個專屬空間裡，除了有精心挑選的書中精華，文末也為你準備了暖心的小驚喜！</p>
   </div>
 
   <!-- Story Section -->
   <div class="card">
     <div class="section-divider">童 話 故 事</div>
+
     <h2 style="font-size:20px; color:var(--olive-dark); margin-bottom:10px;">👿 魔鬼的三根金頭髮</h2>
+
     <p>講述一個出生注定要娶公主的窮小子，遭到國王百般刁難，甚至被要求拔下魔鬼頭上的三根金頭髮作為聘禮。最終，他成功帶回金頭髮娶了公主，而貪心的國王聽信他的話去尋找寶藏，反被留下來當永遠的渡船夫。</p>
+
     <p>不知道你們有沒有聽過這個故事呢？</p>
 
+    <!-- PDF extracted image placed at the end of page 1 section -->
     <div class="inner-image">
-      <img src="vol3/內頁圖-p1-1.jpg" alt="童話裡的心理學 - 故事內頁插圖">
+      <img src="內頁圖-p1-1.jpg" alt="童話裡的心理學 - 故事內頁插圖">
       <div class="caption">— 故事中的角色與寓意 —</div>
     </div>
   </div>
@@ -171,8 +265,11 @@ body {
   <!-- Psychology Analysis -->
   <div class="card">
     <div class="section-divider">心 理 剖 析</div>
+
     <p>裡面的角色<strong>渡船夫</strong>應該讓我最有感吧！</p>
-    <p>「為什麼得撐船擺渡一輩子？」這個問題的答案如此簡單——<strong>「把篙子交給下一個人就可以了」</strong>🤲</p>
+
+    <p>「為什麼得撐船擺渡一輩子？」這個問題的答案如此簡單——<strong>「把篙子交給下一個人就可以了」🤲</strong></p>
+
     <p>不再需要討好每個人、萬人景仰、眾人期待。這麼做不是為了特異獨行，而是為了服侍——服侍來自「大我」的聲音。勇敢闖出自己的一片新天地吧！</p>
 
     <div class="highlight-box">
@@ -183,13 +280,17 @@ body {
 
     <p>有人往前踏出，有人裹足不前 👟</p>
 
+    <!-- User illustration placed at psychology analysis section -->
     <div class="inner-image">
-      <img src="vol3/童話裡的心理學-插圖.jpg" alt="童話裡的心理學插圖">
+      <img src="童話裡的心理學-插圖.jpg" alt="童話裡的心理學插圖">
     </div>
 
     <p>正打這一篇文章的我，一個月前決定踏進未知領域接下這一份工作。說實話，我的頭腦現在就像一坨糨糊。但當初不放下手中的篙子，又怎麼知道會發生什麼事呢？</p>
 
-    <div class="quote-block">「而你，又想成為哪一種人呢？」</div>
+    <div class="quote-block">
+      「而你，又想成為哪一種人呢？」
+    </div>
+
     <p>童話裡的心理學，真的太有意思。像是小時候看不懂的電影，長大卻越有感觸 🥺</p>
   </div>
 
