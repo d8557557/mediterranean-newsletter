@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>創意細物指南 — 卿鬆翻一頁 vol.4</title>
+<style>
+/* ===== 全局重置 & 變數 ===== */
+:root {
+  --terracotta: #C4815A;
+  --terracotta-dark: #9E6340;
+  --olive: #7D9B6A;
+  --olive-dark: #5E7A4E;
+  --med-blue: #6B8FA3;
+  --cream: #FFF9F2;
+  --cream-dark: #F5EDE4;
+  --warm-brown: #4A3525;
+  --text: #3D2C1A;
+  --text-light: #7A6B5A;
+  --gold: #D4A853;
+  --white-90: rgba(255,252,248,0.92);
+  --white-85: rgba(255,252,248,0.85);
+  --shadow: 0 4px 24px rgba(74,53,37,0.10);
+  --shadow-lg: 0 8px 40px rgba(74,53,37,0.15);
+  --radius: 16px;
+  --max-w: 680px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  line-height: 1.8;
+  color: var(--text);
+  background: #F3EFE8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 背景圖 ===== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('../generated/創意細物指南-bg_20260702_231456.png') center/cover fixed no-repeat;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Hero ===== */
+.hero {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 28px;
+}
+.hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0;
+}
+
+/* ===== 卡片 ===== */
+.card {
+  background: var(--white-90);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px 28px;
+  margin-bottom: 20px;
+}
+
+/* ===== 標題區 ===== */
+h1 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--olive-dark);
+  letter-spacing: 0.05em;
+  line-height: 1.35;
+}
+.subtitle {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #EDE8E0;
+}
+.subtitle span {
+  display: inline-block;
+  background: var(--olive);
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-right: 6px;
+  letter-spacing: 0.1em;
+}
+
+/* ===== 內文 ===== */
+.body-text {
+  font-size: 16px;
+  line-height: 2;
+  color: var(--text);
+}
+.body-text p {
+  margin-bottom: 18px;
+}
+.body-text .quote {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--terracotta-dark);
+  padding: 16px 20px;
+  background: #FDF6F0;
+  border-left: 4px solid var(--terracotta);
+  border-radius: 0 8px 8px 0;
+  margin: 20px 0;
+}
+.body-text .highlight {
+  background: linear-gradient(to top, rgba(125,155,106,0.15) 40%, transparent 40%);
+  font-weight: 600;
+}
+.body-text em {
+  font-style: normal;
+  color: var(--med-blue);
+  font-weight: 600;
+}
+
+/* ===== 內頁圖 ===== */
+.content-image {
+  margin: 24px 0;
+  text-align: center;
+}
+.content-image img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.content-image .caption {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-top: 8px;
+  letter-spacing: 0.05em;
+}
+
+/* ===== 分隔標題 ===== */
+.section-divider {
+  text-align: center;
+  margin: 0 0 20px;
+  font-size: 13px;
+  letter-spacing: 0.35em;
+  color: var(--olive);
+  font-weight: 600;
+}
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 1.5px;
+  background: var(--olive);
+  opacity: 0.25;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+
+/* ===== 創意亮點 ===== */
+.highlight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.highlight-item {
+  background: #F8F5F0;
+  border: 1px solid #EDE0D0;
+  border-radius: 10px;
+  padding: 16px 14px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.highlight-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.highlight-item .icon {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 6px;
+}
+.highlight-item .label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--warm-brown);
+  line-height: 1.4;
+}
+
+/* ===== CTA ===== */
+.cta-box {
+  background: linear-gradient(135deg, #7D9B6A, #5E7A4E);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.cta-box h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.cta-box p {
+  margin: 0;
+  font-size: 15px;
+  opacity: 0.92;
+  line-height: 1.7;
+}
+
+/* ===== 讀者禮 ===== */
+.gift-box {
+  text-align: center;
+  border: 2px dashed var(--terracotta);
+  background: var(--white-90);
+  border-radius: var(--radius);
+  padding: 24px 22px;
+  margin-bottom: 20px;
+}
+.gift-box p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 2;
+  color: var(--warm-brown);
+}
+.gift-box strong {
+  color: var(--terracotta-dark);
+}
+
+/* ===== 退訂 ===== */
+.unsubscribe {
+  text-align: center;
+  font-size: 14px;
+  color: #8B7D72;
+  margin-bottom: 14px;
+}
+.unsubscribe a {
+  color: #8B7D72;
+  text-decoration: underline;
+}
+
+/* ===== Footer ===== */
+.footer {
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid #E0D8CC;
+  font-size: 13px;
+  color: #7A6B5A;
+}
+.footer p { margin: 0; }
+
+/* ===== RWD 響應式 ===== */
+@media (max-width: 768px) {
+  .container { padding: 12px 12px 40px; }
+  .card { padding: 24px 18px; }
+  h1 { font-size: 22px; }
+  .body-text { font-size: 15px; }
+  .highlight-grid { grid-template-columns: 1fr; }
+  .cta-box { padding: 24px 18px; }
+  .cta-box h2 { font-size: 18px; }
+  .gift-box p { font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 8px 8px 32px; }
+  .card { padding: 20px 14px; }
+  h1 { font-size: 20px; }
+  .body-text { font-size: 14px; }
+  .body-text .quote { font-size: 16px; padding: 12px 16px; }
+  .section-divider { font-size: 11px; letter-spacing: 0.25em; }
+  .highlight-item { padding: 12px 10px; }
+  .gift-box { padding: 18px 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ===== HERO ===== -->
+  <div class="hero">
+    <img src="../generated/hero-創意細物指南_1300x650.jpg" alt="卿鬆翻一頁 — 創意細物指南">
+  </div>
+
+  <!-- ===== INTRO ===== -->
+  <div class="card">
+    <h1>你是廣告行銷人？<br>還是追求生活樂趣的平凡人？</h1>
+    <div class="subtitle"><span>vol.4</span> 創意細物指南</div>
+
+    <div class="body-text">
+      <p>☕️ 嗨嗨！我是卿鬆。不知道你是不是也跟我一樣，有一天發現這個世界再也無法讓你逃離吵雜的生活。</p>
+      <p>跟著我，找回生活的專注與平靜。在這個專屬空間裡，除了有精心挑選的書中精華，文末也為你準備了暖心的小驚喜！</p>
+      <p>這一期帶來的書是 <strong class="highlight">「創意細物指南」</strong></p>
+    </div>
+
+    <!-- 內頁圖-p1-1 -->
+    <div class="content-image">
+      <img src="內頁圖-p1-1.jpg" alt="創意細物指南 — 內頁插圖 1">
+    </div>
+
+    <div class="body-text">
+      <p class="quote">「這一隻娃娃什麼？」<br>「這是泡泡瑪特啊」</p>
+      <p>「可以請你幫我順便買娃娃嗎？」<br>「好啊 這一隻是什麼？」<br>「這是 <em>JELLY CAT</em>？」</p>
+      <p>不知道為什麼當我讀到這一本書當中篇章 <strong>「接觸人群」</strong>，居然想到跟同事之間的對話（現在是前同事⋯⋯？）<br>透過她開拓了很多新視野 ➔➔ 超多梗圖 + 娃娃部分 ✨<br>主管也說希望我能多學習她的創意。</p>
+    </div>
+  </div>
+
+  <!-- ===== 創意亮點 ===== -->
+  <div class="card">
+    <div class="section-divider">創 意 筆 記</div>
+
+    <div class="highlight-grid">
+      <div class="highlight-item">
+        <span class="icon">💡</span>
+        <span class="label">創意與行銷<br>人人都需要</span>
+      </div>
+      <div class="highlight-item">
+        <span class="icon">👥</span>
+        <span class="label">接觸人群<br>有人的地方就有資訊</span>
+      </div>
+      <div class="highlight-item">
+        <span class="icon">🎯</span>
+        <span class="label">善用資訊的人<br>就能擁有創意</span>
+      </div>
+      <div class="highlight-item">
+        <span class="icon">🌟</span>
+        <span class="label">人人都是品牌<br>活出自己的生活態度</span>
+      </div>
+    </div>
+
+    <div class="body-text" style="margin-top:8px;">
+      <p>✨ <strong>創意與行銷</strong>在這個時代裡，人人都需要，人人都是品牌 ✨</p>
+      <p>這本書雖然可以說是工具書，但我想運用在生活也是一本很棒的書。</p>
+    </div>
+
+    <!-- 內頁圖-p1-2 -->
+    <div class="content-image">
+      <img src="內頁圖-p1-2.jpg" alt="創意細物指南 — 內頁插圖 2">
+    </div>
+
+    <div class="body-text">
+      <p>👥 接觸人群是目標<br>有人的地方就有資訊<br>善用資訊的人就能擁有創意</p>
+      <p>像我就從沒想到與同事的日常對話也可以加入這一篇文章啊！</p>
+    </div>
+  </div>
+
+  <!-- ===== 金句區 ===== -->
+  <div class="card" style="background: var(--white-90);">
+    <div class="body-text">
+      <p class="quote" style="font-size:20px; text-align:center; border-left-color: var(--gold); background: #FBF5E8;">
+        接觸人群是為了給對方一個機會<br>去認識那個更好的你 ❣️
+      </p>
+      <p>這句話真的是直擊心臟。</p>
+      <p>但害羞也沒關係，透過觀察的角度，一樣可以好好捕捉那些細微的變化與樂趣。</p>
+      <p>如果你是廣告行銷業者，打破視野應用在事業上；<br>如果你是像我一樣的平凡人，生活多點樂趣與體驗。</p>
+    </div>
+  </div>
+
+  <!-- ===== CTA ===== -->
+  <div class="cta-box">
+    <h2>翻開創意細物指南</h2>
+    <p>一步一步打破框架<br>活出自己的生活態度與方式</p>
+  </div>
+
+  <!-- ===== 讀者禮 ===== -->
+  <div class="gift-box">
+    <p>
+      感謝您的今天的閱報，讀者禮「<strong>10元購物金</strong>」限量100份<br>
+      輸入兌換碼「<strong>卿鬆學創意</strong>」就可以兌換（發報七日內有效）<br>
+      卿鬆翻一頁，我們下頁見！
+    </p>
+  </div>
+
+  <!-- ===== 退訂 ===== -->
+  <div class="unsubscribe">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfBeuECJmAnhRDTRv-i6509RGbg3VRolu7_BuAPBPM9pnNXCQ/viewform" target="_blank">不想收到卿鬆小編的信請點我</a>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <div class="footer">
+    <p>卿鬆翻一頁 &#169; 2026</p>
+  </div>
+
+</div>
+
+</body>
+</html>
