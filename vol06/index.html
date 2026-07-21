@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高績效心智 — 卿鬆翻一頁 vol.6</title>
+<style>
+/* ===== 全局重置 & 變數 ===== */
+:root {
+  --teal: #3A8F8F;
+  --teal-dark: #2A6F6F;
+  --navy: #34495E;
+  --navy-dark: #2C3E50;
+  --gold: #D4A853;
+  --gold-light: #E8C97A;
+  --cream: #FFF9F5;
+  --cream-dark: #F5EDE4;
+  --warm-brown: #4A3525;
+  --text: #3D2C1A;
+  --text-light: #7A6B5A;
+  --white-90: rgba(255,252,248,0.92);
+  --white-85: rgba(255,252,248,0.85);
+  --shadow: 0 4px 24px rgba(74,53,37,0.10);
+  --shadow-lg: 0 8px 40px rgba(74,53,37,0.15);
+  --radius: 16px;
+  --max-w: 680px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  line-height: 1.8;
+  color: var(--text);
+  background: #F3EFE8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 背景圖 ===== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('../generated/bg-高績效心智_20260721_234146.png') center/cover fixed no-repeat;
+  opacity: 0.30;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Hero ===== */
+.hero {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 28px;
+}
+.hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0;
+}
+
+/* ===== 卡片 ===== */
+.card {
+  background: var(--white-90);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 32px 28px;
+  margin-bottom: 20px;
+}
+
+.card h1 {
+  margin: 0 0 6px;
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--teal-dark);
+  letter-spacing: 0.03em;
+  line-height: 1.35;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #EDE8E0;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 2;
+  color: var(--text);
+  margin: 0 0 18px;
+}
+.card p:last-child { margin-bottom: 0; }
+
+.vol-tag {
+  display: inline-block;
+  background: var(--teal);
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-right: 6px;
+  letter-spacing: 0.1em;
+}
+
+/* ===== 引用區塊 ===== */
+.quote-box {
+  background: #F0F8F8;
+  border-left: 4px solid var(--teal);
+  border-radius: 0 8px 8px 0;
+  padding: 12px 18px;
+  margin: 0 0 18px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--teal-dark);
+  line-height: 1.8;
+}
+
+/* ===== 要點指引 ===== */
+.point-guide {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0 0 18px;
+}
+.point-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 16px 18px;
+  background: #F8F5F0;
+  border: 1px solid #EDE0D0;
+  border-radius: 10px;
+}
+.point-item .emoji {
+  font-size: 28px;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+.point-item .desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--warm-brown);
+}
+
+/* ===== 分隔線區塊標題 ===== */
+.section-divider {
+  text-align: center;
+  margin: 0 0 20px;
+  font-size: 13px;
+  letter-spacing: 0.35em;
+  color: var(--teal);
+  font-weight: 600;
+}
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 1.5px;
+  background: var(--teal);
+  opacity: 0.25;
+  vertical-align: middle;
+}
+.section-divider::before { margin-right: 8px; }
+.section-divider::after { margin-left: 8px; }
+
+/* ===== 內頁圖片 ===== */
+.page-image {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.page-image img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+/* ===== CTA ===== */
+.cta-box {
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  border-radius: var(--radius);
+  padding: 30px 24px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.cta-box h2 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.cta-box p {
+  margin: 0;
+  font-size: 14.5px;
+  opacity: 0.92;
+}
+
+/* ===== Footer ===== */
+.footer {
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid #E0D8CC;
+  font-size: 13px;
+  color: var(--text-light);
+}
+.footer p { margin: 0; }
+
+/* ===== RWD ===== */
+@media (max-width: 768px) {
+  .card { padding: 24px 20px; }
+  .card h1 { font-size: 22px; }
+  .point-item { padding: 14px 14px; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 12px 10px 40px; }
+  .card { padding: 20px 16px; }
+  .card h1 { font-size: 20px; }
+  .point-item { padding: 12px 12px; }
+  .point-item .emoji { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <img src="../generated/hero-高績效心智_1300x650.jpg" alt="卿鬆翻一頁 vol.6 — 高績效心智">
+  </div>
+
+  <!-- Intro -->
+  <div class="card">
+    <h1>不只努力，更要創造價值：重新設計你的工作</h1>
+    <div class="subtitle">
+      <span class="vol-tag">vol.6</span> 高績效心智：全新聰明工作學
+    </div>
+    <p>嗨嗨！我是卿鬆。不知道你是不是也跟我一樣，有一天發現這個世界再也無法讓你逃離吵雜的生活。</p>
+    <p>跟著我，找回生活的專注與平靜。在這個專屬空間裡，除了有精心挑選的書中精華，文末也為你準備了暖心的小驚喜！</p>
+    <p>這一期帶來的書是 <strong style="background:linear-gradient(to top, rgba(58,143,143,0.15) 40%, transparent 40%); font-weight:700;">「高績效心智：全新聰明工作學，讓你成為最厲害的1%」</strong></p>
+  </div>
+
+  <!-- 故事內容 -->
+  <div class="card">
+    <p>📖✨ 不知道當你看到此篇文章的時候是工作中還是尋找理想中的職涯呢？人生中有好長一段時間都在工作，網路上也有許多人分享自己的工作經歷，今天卿鬆也來分享一本幾個月前在二手書店找到的好書吧☕📚</p>
+
+    <div class="quote-box">
+      💡 重新設計工作 — 找到價值缺口
+    </div>
+
+    <p>上班時間到就照著離職前輩前前輩的SOP乖乖地依照交接內容📋……一年兩年三年過去了，依舊在原地薪水也沒📉，你是不是也有這種感覺呢？</p>
+
+    <div class="quote-box">
+      🛠️ 聰明的人工作時不認為著眼於目標就對了，他們會著眼於價值💎，並朝目標邁進🤓
+    </div>
+
+    <p>🛠️🚀 重新設計你的工作吧！</p>
+  </div>
+
+  <!-- 要點指引 -->
+  <div class="card">
+    <div class="section-divider">三 大 心 法</div>
+    <div class="point-guide">
+      <div class="point-item">
+        <span class="emoji">⚖️</span>
+        <span class="desc"><strong>這樣做事到底值不值？</strong> — 很多人都不曾檢視過自己做的事，是否真的能產生價值，且價值不單是從自己衡量，也須是別人能從中獲得多大益處而訂</span>
+      </div>
+      <div class="point-item">
+        <span class="emoji">❓</span>
+        <span class="desc"><strong>敢提出質疑，價值是創造出來的</strong> — 提出問題，不斷找尋做事的新方法，設計新的流程，即使是小小的事情也能是大大影響</span>
+      </div>
+      <div class="point-item">
+        <span class="emoji">🧠</span>
+        <span class="desc"><strong>問笨問題，找出痛點</strong> — 「功能固著」，有時候我們困在既定的想法或方法中，因此想不到好點子。試著問問笨問題吧！為什麼報告總是要用很多投影片呢？越多人看起來越厲害？真的是這樣嗎？</span>
+      </div>
+    </div>
+
+    <!-- 內頁圖 -->
+    <div class="page-image">
+      <img src="p1-img1.png" alt="高績效心智 — 內頁插圖">
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h2>不只努力，更要創造價值</h2>
+    <p>如果覺得工作卡住了，不妨試著重新打破看看它🔨。<br>書中有七種心智方法值得你去挖寶✨</p>
+  </div>
+
+  <!-- Reader Gift -->
+  <div class="card" style="text-align:center; border:2px dashed var(--teal); background:var(--white-90);">
+    <p style="margin:0; font-size:15px; line-height:1.8; color:var(--warm-brown);">
+      感謝您今天的閱報，讀者禮「<strong style="color:var(--teal-dark);">10元購物金</strong>」限量100份<br>
+      輸入兌換碼「<strong style="color:var(--teal-dark);">卿鬆工作學</strong>」就可以兌換（發報後7天內有效）<br>
+      卿鬆翻一頁，我們下頁見！
+    </p>
+  </div>
+
+  <!-- Unsubscribe -->
+  <div class="footer-item" style="text-align:center; font-size:14px; color:#8B7D72; margin-bottom:14px;">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfBeuECJmAnhRDTRv-i6509RGbg3VRolu7_BuAPBPM9pnNXCQ/viewform" target="_blank" style="color:#8B7D72; text-decoration:underline;">不想收到卿鬆小編的信請點我</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="https://campub.com.tw/article/detail/exchangeBonus" target="_blank" style="color:#8B7D72; text-decoration:underline;">購物金兌換說明</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>卿鬆翻一頁 &#169; 2026</p>
+  </div>
+
+</div>
+</body>
+</html>
