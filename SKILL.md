@@ -1,21 +1,70 @@
 # 卿鬆翻一頁 — 電子報製作技能
 
-> 當使用者說「做電子報」「製作新一期」「volX」時載入此技能。
+> 觸發：使用者說「做電子報」「製作新一期」「volX」「做 vol7」時載入。
+> **本檔是唯一來源（single source of truth）**，隨專案 git 版控。
+> 全域載入器：`~/.config/opencode/skills/newsletter/SKILL.md` 只負責指向本檔，**不要在那邊另寫一份流程**，以免兩份內容漂移。
 
 ---
 
-## 工作流程（7 Step）
+## 0. 固定資產（直接用，不要重新問、不要重新找）
+
+| 項目 | 值 |
+|:----|:----|
+| 專案路徑 | `C:\E_電子報` |
+| GitHub repo | `d8557557/mediterranean-newsletter`（分支 `master`） |
+| Pages 網址 | `https://d8557557.github.io/mediterranean-newsletter/` |
+| 取消訂閱表單 | `https://docs.google.com/forms/d/e/1FAIpQLSfBeuECJmAnhRDTRv-i6509RGbg3VRolu7_BuAPBPM9pnNXCQ/viewform` |
+| 購物金兌換說明 | `https://campub.com.tw/article/detail/exchangeBonus` |
+| 讀者禮 | 10 元購物金，限量 100 份 |
+| 兌換碼 | 自當期內文提取（找「兌換碼」後引號內文字），**不主動詢問使用者** |
+| 兌換期限 | 發報後 7 天內有效 |
+| 開場白素材 | `開場白-卿鬆翻一頁.txt`（內含兩版，依當期語氣選用／改寫） |
+| 心得連結 | `翻一頁的心得網址.txt`（Google Doc，讀者回饋用） |
+| email 版寬 | 620px（table 版型；內文圖 564px、故事圖 520–560px） |
+
+---
+
+## 1. 命名規則（唯一版本，不再兩套並存）
+
+| 類型 | 規則 | 範例 |
+|:----|:----|:----|
+| 期數資料夾 | `volN`，**不補零**；新期為 `vol7`、`vol8`… | `vol2`、`vol3`、`vol7` |
+| 歷史例外（不改） | `vol06`（已上線）、`創刊號`（中文名） | `vol06/`、`創刊號/` |
+| 最新期全文 | 根目錄 `index.html`（含 archive 導覽）＋ `volN/index.html`（同一份內容） | |
+| Hero 圖 | `generated/hero-主題_1300x650.jpg` | `hero-高績效心智_1300x650.jpg` |
+| 方圖 | `generated/square-主題_640x640.jpg`（社群貼文用，不嵌入任何模板） | `square-高績效心智_640x640.jpg` |
+| 背景圖 | `generated/bg-主題_YYYYMMDD_HHMMSS.png` | `bg-高績效心智_20260721_234146.png` |
+| 內頁圖 | `volN/p{頁}-img{序}.png` | `vol06/p1-img1.png` |
+| 內頁圖歷史例外 | `vol3`–`vol5` 用 `內頁圖-p{頁}-{序}.jpg`，不改舊檔 | `內頁圖-p1-1.jpg` |
+| 段落對位表 | `volN/page-map.txt`，**每期必產出** | |
+
+---
+
+## 2. 工作流程（7 Step）
 
 ### Step 0：前置檢查
-- 使用者提供 PDF 路徑，不主動提問
-- 確認 `volXX/` 資料夾存在，若無則建立
-- 讀取 PDF 提取內文與兌換碼
+- 使用者提供 PDF 路徑即開工，不主動提問
+- 建立 `volN/`（N 依上一期 +1，不補零）
+- 讀取 PDF，從 `開場白-卿鬆翻一頁.txt` 挑／改寫開場白
+- 確認 repo 狀態乾淨（`git status`），避免與其他變更混在一起
 
 ### Step 1：PDF 內容處理
 - 用 `python -m pymupdf gettext` 或 `fitz` 提取文字
-- 從內文自動提取兌換碼（找「兌換碼」關鍵字後面的引號內文字）
-- 購物金固定 10 元
-- 產出 `volXX/page-map.txt`（段落對位表）
+- 從內文自動提取兌換碼（找「兌換碼」關鍵字後引號內文字）
+- 購物金固定 10 元、限量 100 份、發報後 7 天
+- **必產出** `volN/page-map.txt`（段落對位表），格式：
+
+```
+段落對位表 -- VOL6：高績效心智
+
+Page 1 --> p1-img1.png
+  - Topic: 重新設計工作、找到價值缺口
+  - Book: 高績效心智：全新聰明工作學，讓你成為最厲害的1%
+  - Theme: 工作設計、價值創造、職涯發展
+
+Page 2 --> (無內頁圖)
+  - Coupon code: 卿鬆工作學（10元購物金）
+```
 
 ### Step 2：Hero 圖製作
 - 用 opencode-draw 技能（`draw.py`）生成
@@ -30,12 +79,13 @@
   ```
 - 若構圖不理想可迭代調整主圖比例
 
-### Step 3：方圖製作
+### Step 3：方圖製作（社群用）
 - 同 hero 風格生成 1024×1024
 - 用 ffmpeg 轉為 **JPG 640×640**：
   ```
   ffmpeg -y -i input.png -vf "scale=640:640" "generated/square-主題_640x640.jpg"
   ```
+- **用途**：社群／IG 貼文素材，不嵌入三模板（模板只用 Hero 與背景圖）
 
 ### Step 4：背景圖製作
 - 水彩紋理風格，對應當期配色
@@ -43,9 +93,13 @@
 
 ### Step 5：內頁圖處理
 - 用 `fitz` 從 PDF 提取圖片：`page.get_images()` + `Pixmap`
-- 視內文段落放置於對應位置
+- 依 `page-map.txt` 放到「內頁圖」區塊（故事內容之後、CTA 之前）
+- 命名照 §1：`p{頁}-img{序}.png`；一張內頁圖都沒有時，該區塊整段刪除
 
 ### Step 6：三模板製作
+
+區塊順序（三版一致）：
+`Hero → Intro（標題＋副標） → 故事內容／要點指引 → 內頁圖 → CTA → 讀者禮（兌換碼） → 取消訂閱＋購物金兌換說明 → Footer`
 
 #### 6a. 配色規則
 - 依當期主題決定主色，使用 CSS 變數（index）或 inline（email/blog）
@@ -53,13 +107,13 @@
 
 #### 6b. index.html（網頁版）
 - 完整 `<!DOCTYPE html>`，CSS 變數，RWD
-- 背景圖參考 `../generated/bg-xxx.png`
-- Hero 圖相對路徑 `../generated/hero-xxx_1300x650.jpg`
-- 內頁圖相對路徑 `內頁圖-xxx.jpg` 或 `pX-imgX.png`
+- 背景圖 `../generated/bg-xxx.png`
+- Hero 圖 `../generated/hero-xxx_1300x650.jpg`
+- 內頁圖同資料夾相對路徑 `pX-imgX.png`
 
 #### 6c. email-template.html（電子郵件版）
 - 620px table 版型，無 CSS block
-- Hero / 內頁圖使用**絕對 GitHub Pages URL**
+- Hero / 內頁圖使用**絕對 GitHub Pages URL**（`https://d8557557.github.io/mediterranean-newsletter/...`）
 - 三色裝飾條（top/bottom）
 - CTA 使用 `bgcolor` table + 深色左側條
 
@@ -72,17 +126,27 @@
 - **內容完全一致**：同一段文字、同一張圖、同一個 CTA 訊息
 - 心法/指引區塊：三版都用純文字段落（email 與 blog 一致，index 可額外使用點狀卡片但內容相同）
 - CTA：標題與內文**分行顯示**（`<br>` 換行）
-- 取消訂閱連結 + 購物金兌換說明並列
+- 取消訂閱連結 + 購物金兌換說明**並列**（`|` 分隔）
+- **舊期不回填**：創刊號、vol2–vol4 缺購物金兌換連結屬歷史狀態，除使用者明確要求，不在新期工作中順手改
 
-### Step 7：部署
-1. 更新專案根目錄 `index.html`（archive 連結 + 最新期內容）
-2. 更新 `AGENTS.md`（製作備忘 + 技能更新記錄）
-3. `git add` → `git commit` → `git push` 至 GitHub Pages
-4. 刪除未使用的 intermediate 檔案（舊版 hero PNG 等）
+### Step 7：部署與驗證
+
+1. 更新 `volN/index.html`（本期全文）
+2. 更新根目錄 `index.html`：
+   - 本期全文（與 `volN/index.html` 內容一致，僅多 archive 導覽）
+   - archive 導覽**必須列出全部期數**：創刊號、vol2、vol3、vol4、vol5…（現況缺 vol.2，新期更新時順手補齊）
+3. 更新 `AGENTS.md`（已完成期數表＋製作備忘＋技能更新記錄）
+4. `git add` → `git commit` → `git push`（master → GitHub Pages）
+5. 清掉未使用的 intermediate（舊版 hero／被取代的生成圖）
+6. **驗證清單**（全部 200 才算完成）：
+   - `https://d8557557.github.io/mediterranean-newsletter/`
+   - `https://d8557557.github.io/mediterranean-newsletter/volN/`
+   - Hero 圖、背景圖、每張內頁圖的絕對 URL
+   - email／blog 模板內的圖 URL 與 volN 實際檔名一致（最常見的錯字）
 
 ---
 
-## 配色參考（歷史）
+## 3. 配色參考（歷史）
 | 期數 | 主題 | 主色 | 輔色 | 點綴色 |
 |:----|:-----|:-----|:-----|:-------|
 | 創刊號 | 地中海日常 | 陶土棕 #C4815A | 橄欖綠 #7D9B6A | 地中海藍 #6B8FA3 |
@@ -94,10 +158,19 @@
 
 ---
 
-## 圖片輸出規範總結
+## 4. 圖片輸出規範總結
 | 類型 | 尺寸 | 格式 | 備註 |
 |:----|:----|:----|:-----|
 | Hero 圖 | 1300×650 | JPG | 必含主標題+小字，字體配合主題 |
-| 方圖 | 640×640 | JPG | 同 hero 風格 |
+| 方圖 | 640×640 | JPG | 同 hero 風格，社群用 |
 | 背景圖 | 原始尺寸 | PNG | 水彩紋理 |
 | 內頁圖 | 原始尺寸 | PNG/JPG | 從 PDF 提取 |
+
+---
+
+## 5. 已知技術債（新期不處理，除非使用者指定）
+- **最新期有兩份全文**：根 `index.html` 與 `volN/index.html` 靠人工同步；新期一定要兩邊都改並比對
+- **archive 缺 vol.2 連結**（頁面存在但無入口）
+- **舊期缺購物金兌換連結**：創刊號、vol2、vol3、vol4 的 3 個模板皆無
+- **`generated/` 孤兒檔**：`hero-創意細物指南` v2/v3/無版號 等舊圖仍在版控中
+- **`page-map.txt` 不齊**：只有 vol4、vol5、vol06 有
