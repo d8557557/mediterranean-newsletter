@@ -21,6 +21,8 @@
 | 開場白素材 | `開場白-卿鬆翻一頁.txt`（內含兩版，依當期語氣選用／改寫） |
 | 心得連結 | `翻一頁的心得網址.txt`（Google Doc，讀者回饋用） |
 | email 版寬 | 620px（table 版型；內文圖 564px、故事圖 520–560px） |
+| Hook 廣告圖 | 橫式 1200×550 JPG ＋ 直式 480×640 PNG（30px 圓角），同主題同文案 |
+| 廣告 CTA 預設 | 「點我看書中精華 →」（可依當期調整，兩張廣告圖需一致） |
 
 ---
 
@@ -33,6 +35,8 @@
 | 最新期全文 | 根目錄 `index.html`（含 archive 導覽）＋ `volN/index.html`（同一份內容） | |
 | Hero 圖 | `generated/hero-主題_1300x650.jpg` | `hero-高績效心智_1300x650.jpg` |
 | 方圖 | `generated/square-主題_640x640.jpg`（社群貼文用，不嵌入任何模板） | `square-高績效心智_640x640.jpg` |
+| Hook 廣告圖（橫） | `generated/ad-hook-主題_1200x550.jpg`（投放用，不嵌入模板） | `ad-hook-高績效心智_1200x550.jpg` |
+| Hook 廣告圖（直） | `generated/ad-hook-主題_480x640.png`（30px 圓角、PNG） | `ad-hook-高績效心智_480x640.png` |
 | 背景圖 | `generated/bg-主題_YYYYMMDD_HHMMSS.png` | `bg-高績效心智_20260721_234146.png` |
 | 內頁圖 | `volN/p{頁}-img{序}.png` | `vol06/p1-img1.png` |
 | 內頁圖歷史例外 | `vol3`–`vol5` 用 `內頁圖-p{頁}-{序}.jpg`，不改舊檔 | `內頁圖-p1-1.jpg` |
@@ -40,7 +44,7 @@
 
 ---
 
-## 2. 工作流程（7 Step）
+## 2. 工作流程（8 Step）
 
 ### Step 0：前置檢查
 - 使用者提供 PDF 路徑即開工，不主動提問
@@ -82,7 +86,56 @@ Page 2 --> (無內頁圖)
   ```
 - 若構圖不理想可迭代調整主圖比例
 
-### Step 3：方圖製作（社群用）
+### Step 3：Hook 廣告圖製作（投放用，一次出兩張）
+
+**目的**：讓人停下來點進來（點擊率），不是品牌識別。**不可把 Hero 直接縮放**——Hero 的固定標題＋小字是品牌版型，Hook 廣要的是痛點句＋CTA。
+
+一次產出兩個尺寸（同一主題、同一文案、同一配色，只換版型）：
+
+| 版本 | 尺寸 | 格式 | 命名 | 版面 |
+|:--|:--|:--|:--|:--|
+| 橫式 | 1200×550 | JPG | `generated/ad-hook-主題_1200x550.jpg` | 左文右圖（或右文左圖） |
+| 直式 | 480×640 | **PNG（30px 圓角）** | `generated/ad-hook-主題_480x640.png` | 上文下圖（或上圖下文） |
+
+**文案規則**
+- 主 Hook：≤14 字，最多 2 行（單行 ≤9 字），優先改寫內文痛點句
+- 句型三選一：反問（「你是不是也…」）／痛點直述／數字反差
+- 必含：主 Hook 大字＋品牌小字「卿鬆翻一頁」＋CTA（預設「點我看書中精華 →」，可依當期調整）
+- 可選：書名、期數
+- **兩張必須用同一組文案與配色**，只有版型不同
+
+**設計規則**
+- 設計方向必須扣住當期內文主題（用書中核心意象／場景，不做通用裝飾圖）
+- 主體不壓字；四周留 **40px 安全區**（避免平台裁切）
+- 文字與底圖對比 ≥ 4.5:1，不夠就加半透明色塊或柔邊遮罩
+- 配色沿用當期三色（與 Hero 同視覺語言）
+
+**輸出**
+- 橫式（ffmpeg，JPG 品質 90、< 300KB）：
+  ```
+  ffmpeg -y -i ad-master-landscape.png -vf "scale=1200:550" -q:v 2 "generated/ad-hook-主題_1200x550.jpg"
+  ```
+- 直式（Pillow，30px 圓角、PNG 保留透明角）：
+  ```python
+  from PIL import Image, ImageDraw
+  W, H, R, S = 480, 640, 30, 4          # S = 超取樣倍率，讓圓角平滑
+  im = Image.open("ad-master-portrait.png").convert("RGBA").resize((W, H), Image.LANCZOS)
+  mask = Image.new("L", (W * S, H * S), 0)
+  ImageDraw.Draw(mask).rounded_rectangle([0, 0, W * S - 1, H * S - 1], radius=R * S, fill=255)
+  im.putalpha(mask.resize((W, H), Image.LANCZOS))
+  im.save("generated/ad-hook-主題_480x640.png", "PNG", optimize=True)
+  ```
+  母檔比例要對齊輸出，避免縮放變形：橫式用 2400×1100（約 2.18:1）、直式用 960×1280（3:4）
+- 兩張用**同一份設計簡述**（當期主題、三色、核心意象）分別生成，確保是同一套視覺語言、只差版型
+
+**檢查**
+- 縮到 25%（約手機動態牆大小）仍讀得到字、無錯字、CTA 一眼可見
+- 直式 PNG 四角確實透明（`getpixel((0,0))[3] == 0`）
+- 需要 A/B 測試時，加 `-v2` 後綴另存，不要覆蓋第一版
+
+**不嵌入三模板**（純投放素材，跟方圖同類）
+
+### Step 4：方圖製作（社群用）
 - 同 hero 風格生成 1024×1024
 - 用 ffmpeg 轉為 **JPG 640×640**：
   ```
@@ -90,49 +143,49 @@ Page 2 --> (無內頁圖)
   ```
 - **用途**：社群／IG 貼文素材，不嵌入三模板（模板只用 Hero 與背景圖）
 
-### Step 4：背景圖製作
+### Step 5：背景圖製作
 - 水彩紋理風格，對應當期配色
 - 生成後直接使用 PNG 原檔
 
-### Step 5：內頁圖處理
+### Step 6：內頁圖處理
 - 用 `fitz` 從 PDF 提取圖片：`page.get_images()` + `Pixmap`
 - 依 `page-map.txt`（若未產出則依內文段落順序）放到「內頁圖」區塊（故事內容之後、CTA 之前）
 - 命名照 §1：`p{頁}-img{序}.png`；一張內頁圖都沒有時，該區塊整段刪除
 
-### Step 6：三模板製作
+### Step 7：三模板製作
 
 區塊順序（三版一致）：
 `Hero → Intro（標題＋副標） → 故事內容／要點指引 → 內頁圖 → CTA → 讀者禮（兌換碼） → 取消訂閱＋購物金兌換說明 → Footer`
 
-#### 6a. 配色規則
+#### 7a. 配色規則
 - 依當期主題決定主色，使用 CSS 變數（index）或 inline（email/blog）
 - 三色搭配：主色 + 輔色 + 點綴色
 
-#### 6b. index.html（網頁版）
+#### 7b. index.html（網頁版）
 - 完整 `<!DOCTYPE html>`，CSS 變數，RWD
 - 背景圖 `../generated/bg-xxx.png`
 - Hero 圖 `../generated/hero-xxx_1300x650.jpg`
 - 內頁圖同資料夾相對路徑 `pX-imgX.png`
 
-#### 6c. email-template.html（電子郵件版）
+#### 7c. email-template.html（電子郵件版）
 - 620px table 版型，無 CSS block
 - Hero / 內頁圖使用**絕對 GitHub Pages URL**（`https://d8557557.github.io/mediterranean-newsletter/...`）
 - 三色裝飾條（top/bottom）
 - CTA 使用 `bgcolor` table + 深色左側條
 
-#### 6d. blog-template.html（部落格嵌入版）
+#### 7d. blog-template.html（部落格嵌入版）
 - `div` fragment，全部 inline style
 - Hero / 內頁圖使用絕對 GitHub Pages URL
 - 心法/指引區域使用**純文字段落**（粗體標題+說明），不使用 2×2 圖標網格
 
-#### 6e. 三模板一致規則
+#### 7e. 三模板一致規則
 - **內容完全一致**：同一段文字、同一張圖、同一個 CTA 訊息
 - 心法/指引區塊：三版都用純文字段落（email 與 blog 一致，index 可額外使用點狀卡片但內容相同）
 - CTA：標題與內文**分行顯示**（`<br>` 換行）
 - 取消訂閱連結 + 購物金兌換說明**並列**（`|` 分隔）
 - **舊期不回填**：創刊號、vol2–vol4 缺購物金兌換連結屬歷史狀態，除使用者明確要求，不在新期工作中順手改
 
-### Step 7：部署與驗證
+### Step 8：部署與驗證
 
 1. 更新 `volN/index.html`（本期全文）
 2. 更新根目錄 `index.html`：
@@ -166,6 +219,8 @@ Page 2 --> (無內頁圖)
 |:----|:----|:----|:-----|
 | Hero 圖 | 1300×650 | JPG | 必含主標題+小字，字體配合主題 |
 | 方圖 | 640×640 | JPG | 同 hero 風格，社群用 |
+| Hook 廣告圖（橫） | 1200×550 | JPG | 痛點句＋CTA，投放用 |
+| Hook 廣告圖（直） | 480×640 | PNG | 30px 圓角、四角透明，與橫式同主題同文案 |
 | 背景圖 | 原始尺寸 | PNG | 水彩紋理 |
 | 內頁圖 | 原始尺寸 | PNG/JPG | 從 PDF 提取 |
 
