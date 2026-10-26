@@ -22,6 +22,7 @@
 | 心得連結 | `翻一頁的心得網址.txt`（Google Doc，讀者回饋用） |
 | email 版寬 | 620px（table 版型；內文圖 564px、故事圖 520–560px） |
 | Hook 廣告圖 | 橫式 1200×550 JPG ＋ 直式 480×640 PNG（30px 圓角），同主題同文案 |
+| 品牌 logo | 1024×1024 方形（金框印章），貼在廣告圖右下角：橫式 100px／直式 76px |
 | 廣告 CTA | **依當期內文決定、每期重寫**（不沿用上一期）；橫式與直式兩張必須同字 |
 
 ---
@@ -37,6 +38,7 @@
 | 方圖 | `generated/square-主題_640x640.jpg`（社群貼文用，不嵌入任何模板） | `square-高績效心智_640x640.jpg` |
 | Hook 廣告圖（橫） | `generated/ad-hook-主題_1200x550.jpg`（投放用，不嵌入模板） | `ad-hook-高績效心智_1200x550.jpg` |
 | Hook 廣告圖（直） | `generated/ad-hook-主題_480x640.png`（30px 圓角、PNG） | `ad-hook-高績效心智_480x640.png` |
+| 品牌 logo | `generated/logo-卿鬆翻一頁_1024x1024.png`（1:1 方形、跨期沿用） | |
 | 背景圖 | `generated/bg-主題_YYYYMMDD_HHMMSS.png` | `bg-高績效心智_20260721_234146.png` |
 | 內頁圖 | `volN/p{頁}-img{序}.png` | `vol06/p1-img1.png` |
 | 內頁圖歷史例外 | `vol3`–`vol5` 用 `內頁圖-p{頁}-{序}.jpg`，不改舊檔 | `內頁圖-p1-1.jpg` |
@@ -98,17 +100,22 @@ Page 2 --> (無內頁圖)
 | 橫式 | 1536×1024 | 1200×550 | JPG | `generated/ad-hook-主題_1200x550.jpg` | 左文右圖（文佔左 2/3） |
 | 直式 | 1024×1536 | 480×640 | **PNG（30px 圓角）** | `generated/ad-hook-主題_480x640.png` | 上文下圖 |
 
+**品牌 logo（固定資產，跨期沿用）**
+- 品牌名「卿鬆翻一頁」**不要寫在廣告圖上**——五個字當標題會搶走主題
+- 改成 **1:1 方形 logo**：暖米紙底、細金框、粗襯線金字、5 字分兩排（上排「卿鬆翻」、下排「一 頁」拉寬對齊），無英文、無多餘符號
+- 資產：`generated/logo-卿鬆翻一頁_1024x1024.png`（只產一次，品牌調整才重生）
+- 每期只需把 logo 貼在**右下角**（見下方輸出規則）
+
 **文字大小（手機可讀，硬規則）**
-- **只放 3 層文字**：品牌字 → 主 Hook → CTA。不要小字副標、不要書名小字、不要期數小字
+- 圖上只放 **2 層文字**：主 Hook → CTA（品牌交給 logo，不要再用文字寫品牌名）
 - 主 Hook 每行字高 ≥ 畫面高度的 **1/5**
-- 品牌字 ≥ 畫面高度的 **1/18**
 - CTA ≥ 畫面高度的 **1/12**，放在金色膠囊內
 - 任何小於畫面高度 **1/24** 的字一律不出現（手機上等於看不見）
 
 **文案規則**
 - 主 Hook：≤14 字，最多 2 行（單行 ≤9 字），優先改寫內文痛點句
 - 句型三選一：反問（「你是不是也…」）／痛點直述／數字反差
-- 必含：主 Hook 大字＋品牌字「卿鬆翻一頁」＋CTA
+- 必含：主 Hook 大字＋CTA
 - **CTA 每期依內文重寫**（不設固定文案、不沿用上一期）：
   - 從當期內文的「承諾」或「痛點」改寫，讓人知道點進去能得到什麼
   - ≤10 字為佳（最多 12 字），動詞開頭或帶箭頭（例：「找到你的價值缺口」「別再瞎忙，看方法」）
@@ -118,46 +125,62 @@ Page 2 --> (無內頁圖)
 **構圖規則（生成前就要寫進 prompt）**
 - 所有內容（文字＋插畫）留在**中央帶**，上下留白：橫式上下各 ≥15%、直式上下各 ≥11%
   （因為輸出比例與生成比例不同，一定要裁切；留白不足會切到字）
+- **右下角留白給 logo**：橫式右下約 20% 寬 × 35% 高、直式右下約 25% × 25%，插畫不得進入
 - 設計方向必須扣住當期內文主題（書中核心意象／場景），不做通用裝飾圖
 - 主體完整入鏡不切邊、不壓字；配色沿用當期三色
 
 **提示詞範本**
 ```
 <主題> 的廣告圖，水彩風格、米紙底、當期三色。
-構圖：所有文字與插畫留在中央 X%，上下留白。
+構圖：所有文字與插畫留在中央 X%，上下留白；
+      右下角留空給 logo，不要寫任何品牌名。
 逐字寫出中文（character by character）：
-(1) 品牌字：卿鬆翻一頁
-(2) 主標兩行：別再瞎忙 / 先問值不值
-(3) 金色按鈕白字 CTA：找到你的價值缺口
-插畫：<書中意象>
-不要英文、不要數字、不要多餘文字、不要浮水印。
+(1) 主標兩行：別再瞎忙 / 先問值不值
+(2) 金色按鈕白字 CTA：找到你的價值缺口
+插畫：<書中意象>，位置在<右側／下方>，不要進入右下留白區
+不要英文、不要數字、不要品牌名、不要多餘文字、不要浮水印。
 ```
 
-**裁切與輸出**
+**裁切、貼 logo 與輸出**
 ```python
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFilter
 
-# 橫式：裁掉上下約 15% 後縮成 1200×550
+LOGO = Image.open("generated/logo-卿鬆翻一頁_1024x1024.png").convert("RGB")
+
+def stamp(canvas, size, margin, feather=6):
+    """把方形 logo 貼在右下角；邊緣羽化讓米紙底融入背景。"""
+    lg = LOGO.resize((size, size), Image.LANCZOS).convert("RGBA")
+    w, h = lg.size
+    mask = Image.new("L", (w, h), 255)
+    md = ImageDraw.Draw(mask)
+    for i in range(feather):
+        md.rectangle([i, i, w - 1 - i, h - 1 - i], outline=int(255 * i / feather))
+    lg.putalpha(mask.filter(ImageFilter.GaussianBlur(1.2)))
+    canvas.paste(lg, (canvas.width - margin - size, canvas.height - margin - size), lg)
+    return canvas
+
+# 橫式：裁上下 15% → 1200×550 → 貼 100px logo（邊距 22）
 src = Image.open("ad-gen-landscape.png").convert("RGB")
 w, h = src.size
-src.crop((0, int(h * 0.15), w, int(h * 0.85))).resize((1200, 550), Image.LANCZOS) \
-   .save("generated/ad-hook-主題_1200x550.jpg", "JPEG", quality=90, optimize=True)
+land = src.crop((0, int(h * 0.15), w, int(h * 0.85))).resize((1200, 550), Image.LANCZOS).convert("RGBA")
+stamp(land, 100, 22)
+land.convert("RGB").save("generated/ad-hook-主題_1200x550.jpg", "JPEG", quality=90, optimize=True)
 
-# 直式：縮 470×705 → 置中貼到 480 米色畫布 → 裁中央 480×640 → 30px 圓角
-im = Image.open("ad-gen-portrait.png").convert("RGB").resize((470, 705), Image.LANCZOS)
-canvas = Image.new("RGB", (480, 705), im.getpixel((2, 2)))
-canvas.paste(im, (5, 0))
-im = canvas.crop((0, 20, 480, 660)).convert("RGBA")
+# 直式：縮 480×720 → 裁中央 480×640 → 貼 76px logo（邊距 14）→ 30px 圓角
+src2 = Image.open("ad-gen-portrait.png").convert("RGB")
+im = src2.resize((480, 720), Image.LANCZOS).crop((0, 30, 480, 670)).convert("RGBA")
+stamp(im, 76, 14)
 W, H, R, S = 480, 640, 30, 4          # S = 超取樣，讓圓角平滑
 mask = Image.new("L", (W * S, H * S), 0)
 ImageDraw.Draw(mask).rounded_rectangle([0, 0, W * S - 1, H * S - 1], radius=R * S, fill=255)
-im.putalpha(mask.resize((W, H), Image.LANCZOS))
+im.putalpha(Image.composite(im.getchannel("A"), Image.new("L", im.size, 0), mask.resize((W, H), Image.LANCZOS)))
 im.save("generated/ad-hook-主題_480x640.png", "PNG", optimize=True)
 ```
 
 **檢查**
 - **逐字校對中文**：錯字／漏字／簡體字 → 重新生成，**不要用疊字補救**
-- 縮到 25%（約手機動態牆大小）仍讀得到字、CTA 一眼可見
+- logo 在右下角、不壓插畫主體、不壓字；縮圖看得到但不會搶主題
+- 縮到 25%（約手機動態牆大小）仍讀得到 Hook 與 CTA
 - 直式 PNG 四角確實透明（`getpixel((0,0))[3] == 0`）
 - 需要 A/B 測試時，加 `-v2` 後綴另存，不要覆蓋第一版
 
@@ -249,6 +272,7 @@ im.save("generated/ad-hook-主題_480x640.png", "PNG", optimize=True)
 | 方圖 | 640×640 | JPG | 同 hero 風格，社群用 |
 | Hook 廣告圖（橫） | 1200×550 | JPG | 痛點句＋CTA，投放用 |
 | Hook 廣告圖（直） | 480×640 | PNG | 30px 圓角、四角透明，與橫式同主題同文案 |
+| 品牌 logo | 1024×1024 | PNG | 1:1 金框印章，貼廣告圖右下角 |
 | 背景圖 | 原始尺寸 | PNG | 水彩紋理 |
 | 內頁圖 | 原始尺寸 | PNG/JPG | 從 PDF 提取 |
 
