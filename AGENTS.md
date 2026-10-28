@@ -50,6 +50,14 @@
 - CTA 標題與內文用 `<br>` 分行顯示
 - Blog 版心法不開 2×2 圖標網格，改用純文字段落（與 email 版一致）
 
+#### 2026-10-28 新增：部落格版訂閱電子報輸入框（GAS + clasp）
+- 後端：`gas-subscribe/`（clasp 專案，rootDir=`src`），帳號 `0800@campub.com.tw`，綁定試算表「電子報訂閱名單」／工作表「訂閱名單」
+- 部署：網頁應用程式（執行身分＝部署者、存取權＝任何人），網址記在 SKILL.md §0 固定資產
+- 前端：`gas-subscribe/blog-form-snippet.html`，**零 JavaScript**（form POST + 具名 iframe），只放 blog 版，位置在讀者禮之後
+- 已寫入 SKILL.md：§0 固定資產 3 列、§1 命名、§2 Step 7d/7e/7f、§5 技術債
+- 教訓：`clasp push` 不會更新已部署版本，改 code 後一定要再 `create-deployment` 並用 `open-web-app --json` 取網址
+- 教訓：`.clasp.json` 的 `rootDir` 要指到 `src`，否則片段 HTML 會被當成 Apps Script 檔案一起推上去
+
 #### 2026-10-26 技能體質修復
 - SKILL.md 註冊為全域技能 `newsletter`（載入器指向專案內 SKILL.md，避免雙份流程漂移）
 - 命名規則統一：期數 `volN` 不補零（`vol06`、`創刊號` 列歷史例外）

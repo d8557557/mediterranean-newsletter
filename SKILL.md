@@ -24,6 +24,9 @@
 | Hook 廣告圖 | 橫式 1200×550 JPG ＋ 直式 480×640 PNG（30px 圓角），同主題同文案 |
 | 品牌 logo | 1024×1024 方形（金框印章），貼在廣告圖右下角：橫式 100px／直式 76px |
 | 廣告 CTA | **依當期內文決定、每期重寫**（不沿用上一期）；橫式與直式兩張必須同字 |
+| 訂閱表單（GAS） | `https://script.google.com/macros/s/AKfycbyJhT-vN6mJe43RfbliBBSovN-w450-am8IYtwbIVunz84Ei44EgXauvf2N-f7m_2t7/exec`（帳號 `0800@campub.com.tw`，跨期固定） |
+| 訂閱名單試算表 | `https://drive.google.com/open?id=172RbQZgXh8t94yUm6RL9F3ycYJnE9jkXg3FUAmKyRGk`（工作表「訂閱名單」） |
+| 訂閱後端專案 | `gas-subscribe/`（clasp 專案，rootDir=`src`；說明見 `gas-subscribe/README.md`） |
 
 ---
 
@@ -43,6 +46,7 @@
 | 內頁圖 | `volN/p{頁}-img{序}.png` | `vol06/p1-img1.png` |
 | 內頁圖歷史例外 | `vol3`–`vol5` 用 `內頁圖-p{頁}-{序}.jpg`，不改舊檔 | `內頁圖-p1-1.jpg` |
 | 段落對位表 | `volN/page-map.txt`，**視內容判斷**是否產出（多頁／多圖才需要） | |
+| 訂閱框片段 | `gas-subscribe/blog-form-snippet.html`（跨期同一份，只換 `{{VOL}}`） | |
 
 ---
 
@@ -228,13 +232,22 @@ im.save("generated/ad-hook-主題_480x640.png", "PNG", optimize=True)
 - `div` fragment，全部 inline style
 - Hero / 內頁圖使用絕對 GitHub Pages URL
 - 心法/指引區域使用**純文字段落**（粗體標題+說明），不使用 2×2 圖標網格
+- **含訂閱電子報區塊**（見 7f，只有這一版有）
 
 #### 7e. 三模板一致規則
 - **內容完全一致**：同一段文字、同一張圖、同一個 CTA 訊息
+- **例外**：訂閱電子報輸入框**只放 blog 版**（email 版嵌入表單易被郵件軟體擋、index 版另有入口），這是唯一允許的不一致
 - 心法/指引區塊：三版都用純文字段落（email 與 blog 一致，index 可額外使用點狀卡片但內容相同）
 - CTA：標題與內文**分行顯示**（`<br>` 換行）
 - 取消訂閱連結 + 購物金兌換說明**並列**（`|` 分隔）
 - **舊期不回填**：創刊號、vol2–vol4 缺購物金兌換連結屬歷史狀態，除使用者明確要求，不在新期工作中順手改
+
+#### 7f. 訂閱電子報區塊（只在 blog 版）
+- 位置：**讀者禮之後、購物金兌換說明之前**
+- 直接複製 `gas-subscribe/blog-form-snippet.html`，只把 `{{VOL}}` 換成當期（例 `vol7`）；**GAS 網址跨期固定，不要換**
+- 設計是**零 JavaScript**：`<form method="POST" target="nl-sub-frame">` ＋ `<iframe name="nl-sub-frame">`，GAS 回傳的結果頁直接顯示在 iframe 裡，不讀跨網域回應 → 沒有 CORS 問題
+- 若日後改後端（`gas-subscribe/src/Code.gs`）：`clasp push` **不會**更新線上版本，必須再 `clasp create-deployment` 並用 `open-web-app <id> --json` 取新網址，然後同步改 `action` 與 iframe `src` 兩處
+- 名單欄位只有 `訂閱時間 / Email / 來源期數 / 來源頁面 / 狀態`，**不放姓名電話**（公開網頁收來的資料）
 
 ### Step 8：部署與驗證
 
@@ -279,6 +292,8 @@ im.save("generated/ad-hook-主題_480x640.png", "PNG", optimize=True)
 ---
 
 ## 5. 已知技術債（新期不處理，除非使用者指定）
+- **舊期沒有訂閱框**：只有 vol6 之後的 blog 版有；創刊號～vol5 不回填（除使用者要求）
+- **`gas-subscribe/` 的線上部署與 repo 可能不同步**：改 `Code.gs` 後忘了 `create-deployment`，線上仍是舊版
 - **最新期有兩份全文**：根 `index.html` 與 `volN/index.html` 靠人工同步；新期一定要兩邊都改並比對
 - **archive 缺 vol.2 連結**（頁面存在但無入口）
 - **舊期缺購物金兌換連結**：創刊號、vol2、vol3、vol4 的 3 個模板皆無

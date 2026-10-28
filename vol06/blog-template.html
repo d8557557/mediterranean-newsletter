@@ -64,6 +64,26 @@
     </p>
   </div>
 
+  <!-- 訂閱電子報（零 JS：form POST 到 GAS，結果顯示在 iframe） -->
+  <div style="background:#FFFCF8; border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.06); border-top:4px solid #D4A853; padding:30px 24px 24px; margin-bottom:20px; text-align:center;">
+
+    <p style="margin:0 0 8px; font-size:18px; font-weight:700; color:#2A6F6F; letter-spacing:0.02em; line-height:1.5;">📮 下一期，直接寄到你的信箱</p>
+    <p style="margin:0 0 20px; font-size:14px; line-height:1.9; color:#7A6B5A;">每兩週一本書的精華，還有只有訂閱者才拿得到的讀者禮。<br>填 Email 就能加入，隨時可以取消。</p>
+
+    <form action="https://script.google.com/macros/s/AKfycbyJhT-vN6mJe43RfbliBBSovN-w450-am8IYtwbIVunz84Ei44EgXauvf2N-f7m_2t7/exec" method="POST" target="nl-sub-frame" style="margin:0 auto; max-width:440px;">
+      <input type="hidden" name="vol" value="vol6">
+      <input type="hidden" name="src" value="blog-vol6">
+      <div style="display:flex; flex-wrap:wrap; justify-content:center;">
+        <input type="email" name="email" required autocomplete="email" placeholder="你的 Email" aria-label="你的 Email" style="flex:1 1 210px; box-sizing:border-box; margin:0 6px 8px 0; padding:13px 14px; font-size:15px; font-family:inherit; color:#3D2C1A; background:#FFFFFF; border:1.5px solid #E0D8CC; border-radius:10px; -webkit-appearance:none;">
+        <button type="submit" style="flex:0 0 auto; margin:0 0 8px 0; padding:13px 28px; font-size:15px; font-weight:700; font-family:inherit; color:#FFFFFF; background:#3A8F8F; border:0; border-radius:10px; cursor:pointer; letter-spacing:0.06em; -webkit-appearance:none;">訂閱</button>
+      </div>
+      <p style="margin:6px 0 0; font-size:12px; line-height:1.7; color:#8B7D72;">送出即表示同意收到《卿鬆翻一頁》，隨時可取消訂閱。</p>
+    </form>
+
+    <iframe name="nl-sub-frame" src="https://script.google.com/macros/s/AKfycbyJhT-vN6mJe43RfbliBBSovN-w450-am8IYtwbIVunz84Ei44EgXauvf2N-f7m_2t7/exec?embed=1" title="訂閱結果" scrolling="no" loading="lazy" style="display:block; width:100%; max-width:440px; height:74px; margin:16px auto 0; border:0; background:transparent;"></iframe>
+
+  </div>
+
   <!-- 購物金兌換說明 -->
   <div style="text-align:center; font-size:14px; color:#8B7D72; margin-bottom:14px;">
     <a href="https://campub.com.tw/article/detail/exchangeBonus" target="_blank" style="color:#8B7D72; text-decoration:underline;">購物金兌換說明</a>
