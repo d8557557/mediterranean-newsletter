@@ -53,7 +53,8 @@
 #### 2026-10-28 新增：部落格版訂閱電子報輸入框（GAS + clasp）
 - 後端：`gas-subscribe/`（clasp 專案，rootDir=`src`），帳號 `0800@campub.com.tw`，綁定試算表「電子報訂閱名單」／工作表「訂閱名單」
 - 部署：網頁應用程式（執行身分＝部署者、存取權＝任何人），網址記在 SKILL.md §0 固定資產
-- 前端：`gas-subscribe/blog-form-snippet.html`，**零 JavaScript**（form POST + 具名 iframe），只放 blog 版，位置在讀者禮之後
+- 前端：`gas-subscribe/blog-form-snippet.html`，**零 JavaScript**（form POST 後同頁跳到 GAS 結果頁），只放 blog 版，位置在讀者禮之後；另有獨立頁 `subscribe/index.html`
+- 2026-10-28 修正：**移除 iframe**（部分瀏覽器把 GAS 頁畫成「雲端硬碟」大區塊，使用者要求不可見），改為同分頁導向結果頁；結果頁加「← 回上一頁」
 - 已寫入 SKILL.md：§0 固定資產 3 列、§1 命名、§2 Step 7d/7e/7f、§5 技術債
 - 教訓：`clasp push` 不會更新已部署版本，改 code 後一定要再 `create-deployment` 並用 `open-web-app --json` 取網址
 - 教訓：`.clasp.json` 的 `rootDir` 要指到 `src`，否則片段 HTML 會被當成 Apps Script 檔案一起推上去

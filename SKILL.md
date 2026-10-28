@@ -245,7 +245,9 @@ im.save("generated/ad-hook-主題_480x640.png", "PNG", optimize=True)
 #### 7f. 訂閱電子報區塊（只在 blog 版）
 - 位置：**讀者禮之後、購物金兌換說明之前**
 - 直接複製 `gas-subscribe/blog-form-snippet.html`，只把 `{{VOL}}` 換成當期（例 `vol7`）；**GAS 網址跨期固定，不要換**
-- 設計是**零 JavaScript**：`<form method="POST" target="nl-sub-frame">` ＋ `<iframe name="nl-sub-frame">`，GAS 回傳的結果頁直接顯示在 iframe 裡，不讀跨網域回應 → 沒有 CORS 問題
+- 設計是**零 JavaScript**：`<form method="POST">` 直接送到 GAS，結果頁在**同一個分頁**顯示（結果頁有「← 回上一頁」可返回）
+- **不要用 iframe 嵌 GAS**：部分瀏覽器／預覽器會把 Google 的頁面畫成一大塊「雲端硬碟」畫面（2026-10-28 使用者明確要求移除）
+- 另有獨立頁 `subscribe/index.html`（Pages：`.../subscribe/`），只有訂閱框，可直接給短網址或貼到其他網頁
 - 若日後改後端（`gas-subscribe/src/Code.gs`）：`clasp push` **不會**更新線上版本，必須再 `clasp create-deployment` 並用 `open-web-app <id> --json` 取新網址，然後同步改 `action` 與 iframe `src` 兩處
 - 名單欄位只有 `訂閱時間 / Email / 來源期數 / 來源頁面 / 狀態`，**不放姓名電話**（公開網頁收來的資料）
 

@@ -93,26 +93,30 @@ function doGet(e) {
   return page_('訂閱電子報', '填好 Email 按「訂閱」，結果會顯示在這裡。', 'hint');
 }
 
-/** 產生結果頁；zero-JS 模式下，這頁會顯示在部落格的 iframe 裡 */
+/** 產生結果頁；直接在同一個分頁開啟（不嵌 iframe），所以要有背景與「回上一頁」 */
 function page_(title, msg, kind) {
   var bg = kind === 'ok' ? C.okBg : (kind === 'error' ? C.errBg : '#FFFCF8');
   var titleColor = kind === 'error' ? C.errText : C.main;
   var icon = kind === 'ok' ? '✅ ' : (kind === 'error' ? '⚠️ ' : '📮 ');
+  var isResult = kind === 'ok' || kind === 'error';
 
   var html =
-    '<!DOCTYPE html><html><head><meta charset="utf-8">' +
+    '<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8">' +
     '<meta name="viewport" content="width=device-width, initial-scale=1">' +
+    '<title>卿鬆翻一頁 — 訂閱</title>' +
     '<style>' +
-    'html,body{margin:0;padding:0;background:transparent;}' +
-    'body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",Arial,sans-serif;}' +
-    '.box{box-sizing:border-box;padding:14px 16px;border-radius:10px;background:' + bg + ';}' +
-    '.t{margin:0 0 3px;font-size:15px;font-weight:700;color:' + titleColor + ';line-height:1.5;}' +
-    '.m{margin:0;font-size:13px;color:' + C.sub + ';line-height:1.7;word-break:break-all;}' +
-    '</style></head><body>' +
-    '<div class="box">' +
+    'html,body{margin:0;padding:0;background:#F3EFE8;}' +
+    'body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",Arial,sans-serif;-webkit-text-size-adjust:100%;}' +
+    '.wrap{max-width:520px;margin:0 auto;padding:40px 16px;box-sizing:border-box;}' +
+    '.box{box-sizing:border-box;padding:26px 22px;border-radius:14px;background:' + bg + ';box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center;}' +
+    '.t{margin:0 0 6px;font-size:18px;font-weight:700;color:' + titleColor + ';line-height:1.6;}' +
+    '.m{margin:0;font-size:14px;color:' + C.sub + ';line-height:1.9;word-break:break-all;}' +
+    '.back{display:inline-block;margin-top:18px;font-size:14px;color:' + C.main + ';text-decoration:underline;}' +
+    '</style></head><body><div class="wrap"><div class="box">' +
     (title ? '<p class="t">' + icon + esc_(title) + '</p>' : '') +
-    '<p class="m">' + esc_(msg) + '</p></div>' +
-    '</body></html>';
+    '<p class="m">' + esc_(msg) + '</p>' +
+    (isResult ? '<a class="back" href="#" onclick="if(history.length>1){history.back();}else{location.href=\'https://d8557557.github.io/mediterranean-newsletter/\';}return false;">← 回上一頁</a>' : '') +
+    '</div></div></body></html>';
 
   return HtmlService.createHtmlOutput(html)
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL)

@@ -3,15 +3,15 @@
      用法：整段貼進 volN/blog-template.html，位置在「讀者禮」之後、
            購物金兌換說明之前。
      要改的只有 {{VOL}}（例：vol7）——GAS 網址跨期固定，不用換。
-     注意：form 的 target 必須等於 iframe 的 name（nl-sub-frame）
-     後端：gas-subscribe/（Code.gs 改完要 push + create-deployment，push 不會自動更新線上版本）
+     送出後：同一個分頁直接跳到 GAS 的結果頁（不再嵌 iframe，
+             避免有些瀏覽器把 Google 的 iframe 畫成一大塊雲端硬碟畫面）
+     後端：gas-subscribe/（Code.gs 改完要 push + 更新部署，push 不會自動更新線上版本）
      ============================================================ -->
 <div style="background:#FFFCF8; border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.06); border-top:4px solid #D4A853; padding:30px 24px 24px; margin-bottom:20px; text-align:center;">
 
-  <p style="margin:0 0 8px; font-size:18px; font-weight:700; color:#2A6F6F; letter-spacing:0.02em; line-height:1.5;">📮 下一期，直接寄到你的信箱</p>
-  <p style="margin:0 0 20px; font-size:14px; line-height:1.9; color:#7A6B5A;">每兩週一本書的精華，還有只有訂閱者才拿得到的讀者禮。<br>填 Email 就能加入，隨時可以取消。</p>
+  <p style="margin:0 0 20px; font-size:18px; font-weight:700; color:#2A6F6F; letter-spacing:0.02em; line-height:1.5;">📮 下一期，直接寄到你的信箱</p>
 
-  <form action="https://script.google.com/macros/s/AKfycbyJhT-vN6mJe43RfbliBBSovN-w450-am8IYtwbIVunz84Ei44EgXauvf2N-f7m_2t7/exec" method="POST" target="nl-sub-frame" style="margin:0 auto; max-width:440px;">
+  <form action="https://script.google.com/macros/s/AKfycbyJhT-vN6mJe43RfbliBBSovN-w450-am8IYtwbIVunz84Ei44EgXauvf2N-f7m_2t7/exec" method="POST" style="margin:0 auto; max-width:440px;">
     <input type="hidden" name="vol" value="{{VOL}}">
     <input type="hidden" name="src" value="blog-{{VOL}}">
     <div style="display:flex; flex-wrap:wrap; justify-content:center;">
@@ -20,8 +20,5 @@
     </div>
     <p style="margin:6px 0 0; font-size:12px; line-height:1.7; color:#8B7D72;">送出即表示同意收到《卿鬆翻一頁》，隨時可取消訂閱。</p>
   </form>
-
-  <!-- 訂閱結果顯示區（GAS 回傳的頁面會出現在這裡） -->
-  <iframe name="nl-sub-frame" src="https://script.google.com/macros/s/AKfycbyJhT-vN6mJe43RfbliBBSovN-w450-am8IYtwbIVunz84Ei44EgXauvf2N-f7m_2t7/exec?embed=1" title="訂閱結果" scrolling="no" loading="lazy" style="display:block; width:100%; max-width:440px; height:74px; margin:16px auto 0; border:0; background:transparent;"></iframe>
 
 </div>

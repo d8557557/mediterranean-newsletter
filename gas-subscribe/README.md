@@ -24,13 +24,12 @@
 `blog-form-snippet.html` 是可直接貼進 `blog-template.html` 的區塊，設計成**零 JavaScript**：
 
 ```html
-<form action="<GAS /exec 網址>" method="POST" target="nl-sub-frame"> ... </form>
-<iframe name="nl-sub-frame" src="<GAS /exec 網址>?embed=1"></iframe>
+<form action="<GAS /exec 網址>" method="POST"> ... </form>
 ```
 
-- 用 `target` 指向 iframe，表單送出後 GAS 回傳的結果頁直接顯示在 iframe 裡 → **完全不需要 JS**
-- 不讀取跨網域回應，所以沒有 CORS 問題
-- `?embed=1` 讓 iframe 預載時顯示一行灰字提示，不會留一片空白
+- 送出後**同一個分頁**跳到 GAS 的結果頁（✅ 訂閱成功／已訂閱／格式錯誤），頁面有「← 回上一頁」
+- **不要用 iframe 嵌 GAS**：部分瀏覽器與預覽工具會把 Google 頁面渲染成一大塊「雲端硬碟」畫面，2026-10-28 已移除
+- 獨立頁 `subscribe/index.html` 就是同一段區塊的完整頁面版本
 
 ## 改流程時要注意
 
